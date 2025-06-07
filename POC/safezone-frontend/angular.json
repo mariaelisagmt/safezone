@@ -27,6 +27,8 @@
               }
             ],
             "styles": [
+              "node_modules/leaflet/dist/leaflet.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.scss"
             ]
           },
@@ -87,5 +89,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3c4eed3a-d86c-4325-b57e-9cb703908912"
   }
 }
