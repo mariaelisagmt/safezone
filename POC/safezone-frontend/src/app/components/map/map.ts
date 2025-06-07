@@ -28,13 +28,19 @@ export class MapComponent implements AfterViewInit {
   defaultMarkGeocode: true
 }).addTo(this.map);
 
+const marcadorHTML = `
+  <div class="balao-fala">
+    <div class="icone-bola">👤</div>
+    <span>23</span>
+  </div>
+`;
     // Marcador numerado
     const marker = L.marker([-23.5505, -46.6333], {
   icon: L.divIcon({
-    className: 'number-icon',
-    html: '15555555',
-    iconSize: [30, 30],
-    iconAnchor: [15, 30], // ponto do ícone que fica na coordenada (centralizado horizontalmente)
+    className: '',
+    html: marcadorHTML,
+    iconSize: [80, 50],
+    iconAnchor: [40, 50]
   })
 }).addTo(this.map);
 
