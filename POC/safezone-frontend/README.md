@@ -69,4 +69,10 @@ LEAFLET
 Icones
 - npm install @fortawesome/fontawesome-free
 
-### Rodando Backend Mockado
+### Rodando Backend Mockado (JSON-SERVER)
+npm install -g json-server
+npm install --save-dev json-server
+
+Rodando
+json-server --watch db.json --port 3000
+
