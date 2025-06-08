@@ -1,0 +1,84 @@
+{
+  "ocurrences": [
+    {
+      "id": "1",
+      "height": -23.5505,
+      "width": -46.6333,
+      "amount": 12,
+      "icon": "🔥",
+      "color": "red"
+    },
+    {
+      "id": "2",
+      "height": -22.9068,
+      "width": -43.1729,
+      "amount": 7,
+      "icon": "🚨",
+      "color": "blue"
+    },
+    {
+      "id": "3",
+      "height": -15.7942,
+      "width": -47.8822,
+      "amount": 4,
+      "icon": "🛑",
+      "color": "orange"
+    },
+    {
+      "id": "4",
+      "height": -30.0346,
+      "width": -51.2177,
+      "amount": 9,
+      "icon": "⚠️",
+      "color": "yellow"
+    },
+    {
+      "id": "5",
+      "height": -3.7172,
+      "width": -38.5433,
+      "amount": 15,
+      "icon": "💥",
+      "color": "purple"
+    },
+    {
+      "id": "6",
+      "height": -19.9167,
+      "width": -43.9345,
+      "amount": 11,
+      "icon": "🚒",
+      "color": "red"
+    },
+    {
+      "id": "7",
+      "height": -8.0476,
+      "width": -34.8770,
+      "amount": 3,
+      "icon": "🔔",
+      "color": "green"
+    },
+    {
+      "id": "8",
+      "height": -1.4558,
+      "width": -48.4902,
+      "amount": 6,
+      "icon": "💣",
+      "color": "black"
+    },
+    {
+      "id": "9",
+      "height": -10.9472,
+      "width": -37.0731,
+      "amount": 8,
+      "icon": "🔧",
+      "color": "gray"
+    },
+    {
+      "id": "10",
+      "height": -25.4284,
+      "width": -49.2733,
+      "amount": 5,
+      "icon": "💡",
+      "color": "cyan"
+    }
+  ]
+}
