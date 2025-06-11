@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { MapComponent } from './components/map/map.component';
-import { SideMenu } from './components/side-menu/side-menu';
+import { MainComponent } from './components/main/main.components';
 @Component({
   selector: 'app-root',
-  imports: [MapComponent, SideMenu],
+  imports: [MainComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
