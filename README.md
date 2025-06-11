@@ -94,10 +94,11 @@ npm run format
 
 
 ## Recursos:
-- Instalação do docker
-- Pipeline
-- Análise de código
-- Análise de segurança
+- Instalação do docker (testar)
+- Pipeline (testar)
+- Análise de código (lint + prettier -> manual ok -> testar automáticado)
+- Análise de segurança (eslint de segurança / sonarcube,
+ SAST + DAST + Snyk + ESLint + Testes)
 - Configuração de proteção de branchs e repositórios
 - Criação do CI/CD
 - Aprender a criar testes de frontend com angular
