@@ -5,7 +5,7 @@ import { IOcurrence } from '../interfaces/occurrence.interface';
 import { environment } from '../../environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OcurrenceService {
   private apiUrl = `${environment.apiUrl}/ocurrences`;

@@ -49,5 +49,5 @@ export enum TypeOcorrenceEnum {
   ViolenciaEscolar = 'Violência escolar',
   ViolenciaGenero = 'Violência de gênero',
   ViolenciaRacial = 'Violência racial',
-  ViolenciaReligiosa = 'Violência religiosa'
+  ViolenciaReligiosa = 'Violência religiosa',
 }
