@@ -4,6 +4,19 @@
 
 .app-sidenav {
   width: 250px;
+  border-radius: 0;
+  padding: 15px;
+}
+
+.menu-icon {
+  display: flex;
+  padding: 5px;
+  gap: 10px;
+}
+
+.header-safezone {
+  background-color: #003366;
+  color: white;
 }
 
 mat-toolbar {
@@ -14,4 +27,8 @@ mat-toolbar {
 
 .main-content {
   padding: 16px;
+}
+
+.mat-icon-menu {
+  color: white;
 }
