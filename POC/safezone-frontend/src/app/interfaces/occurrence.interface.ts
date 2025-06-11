@@ -3,6 +3,6 @@ export interface IOcurrence {
     height: number, //latitude
     width: number, //longitude
     amount: number, //quantidade de ocorrências
-    icon: string, //icone
+    type: string, //icone
     color: string //cor
 }
