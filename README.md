@@ -69,6 +69,15 @@ LEAFLET
 Icones
 - npm install @fortawesome/fontawesome-free
 
+Instalação do eslint
+ng add @angular-eslint/schematics
+npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+
+Instalação do pacote base do angular material
+ng add @angular/material 
+npm install @angular/animations
+
+
 ### Rodando Backend Mockado (JSON-SERVER)
 npm install -g json-server
 npm install --save-dev json-server
@@ -76,3 +85,11 @@ npm install --save-dev json-server
 Rodando
 json-server --watch db.json --port 3000
 
+
+Recursos:
+- Instalação do docker
+- Pipeline
+- Análise de código
+- Análise de segurança
+- Configuração de proteção de branchs e repositórios
+- Criação do CI/CD
