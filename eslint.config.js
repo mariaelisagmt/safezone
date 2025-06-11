@@ -1,4 +1,7 @@
 // @ts-check
+import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintConfigPrettier from 'eslint-config-prettier';
+
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
@@ -12,6 +15,9 @@ module.exports = tseslint.config(
       ...tseslint.configs.stylistic,
       ...angular.configs.tsRecommended,
     ],
+    plugins: {
+      prettier: eslintPluginPrettier,
+    },
     processor: angular.processInlineTemplates,
     rules: {
       "@angular-eslint/directive-selector": [
@@ -30,6 +36,20 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      //"@typescript-eslint/indent": ["error", 2],
+      "space-before-blocks": ["error", "always"],
+      "comma-spacing": ["error", { "before": false, "after": true }],
+      "object-curly-spacing": ["error", "always"],
+      "sort-imports": ["warn", { "ignoreCase": false, "ignoreDeclarationSort": true }],
+      "@typescript-eslint/no-unused-vars": ["warn"],
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "variableLike",
+          "format": ["camelCase"]
+        }
+      ],
+      "prettier/prettier": "error",
     },
   },
   {
@@ -39,5 +59,6 @@ module.exports = tseslint.config(
       ...angular.configs.templateAccessibility,
     ],
     rules: {},
-  }
+  },
+  eslintConfigPrettier,
 );

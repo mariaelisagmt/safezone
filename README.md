@@ -85,11 +85,19 @@ npm install --save-dev json-server
 Rodando
 json-server --watch db.json --port 3000
 
+## Rodando o eslint - Análise de código estática
+ng lint ou npx eslint . --ext .ts,.html
 
-Recursos:
+## Rodando com o prettier - Análise de formatação e correção automática
+npm run lint
+npm run format
+
+
+## Recursos:
 - Instalação do docker
 - Pipeline
 - Análise de código
 - Análise de segurança
 - Configuração de proteção de branchs e repositórios
 - Criação do CI/CD
+- Aprender a criar testes de frontend com angular
