@@ -1,0 +1,27 @@
+<div class="pesquisa-container">
+  <h2>Pesquisar Ocorrências</h2>
+
+  <form  (ngSubmit)="onBuscar()">
+    <div>
+      <label for="tipo">Tipo</label>
+      <input id="tipo" formControlName="tipo" placeholder="Ex: Roubo, Assalto" />
+    </div>
+
+    <div>
+      <label for="bairro">Bairro</label>
+      <input id="bairro" formControlName="bairro" placeholder="Nome do bairro" />
+    </div>
+
+    <div>
+      <label for="data">Data</label>
+      <input id="data" formControlName="data" type="date" />
+    </div>
+
+    <button type="submit">Buscar</button>
+  </form>
+
+  <div class="map-section">
+    <p>Resultados no Mapa:</p>
+    <app-map></app-map>
+  </div>
+</div>

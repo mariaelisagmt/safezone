@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { Footer } from '../footer/footer-components';
 
 @Component({
@@ -18,7 +18,8 @@ import { Footer } from '../footer/footer-components';
     MatButtonModule,
     MatListModule,
     RouterOutlet,
-    Footer
+    Footer,
+    RouterModule
   ],
   templateUrl: './main.components.html',
   styleUrl: './main.components.scss',
