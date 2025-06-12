@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Footer } from '../footer/footer-components';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,7 @@ import { RouterOutlet } from '@angular/router';
     MatButtonModule,
     MatListModule,
     RouterOutlet,
+    Footer
   ],
   templateUrl: './main.components.html',
   styleUrl: './main.components.scss',
