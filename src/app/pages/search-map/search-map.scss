@@ -27,3 +27,16 @@
     }
   }
 }
+
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.form-field {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
