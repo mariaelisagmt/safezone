@@ -35,6 +35,3 @@ jobs:
 
       - name: Verificar build
         run: npm run build -- --configuration production
-
-      - name: Construir imagem Docker
-        run: docker build -t minha-app-angular:latest .
