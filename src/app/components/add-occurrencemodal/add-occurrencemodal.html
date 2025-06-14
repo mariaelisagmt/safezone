@@ -1,0 +1,20 @@
+<div class="modal-backdrop" (click)="close()"></div>
+<div class="modal">
+    <h2>Adicionar ocorrência</h2>
+    <form (ngSubmit)="submit($event)">
+    <label>
+        Latitude:
+        <input type="number" [(ngModel)]="latitude" name="latitude" readonly />
+    </label>
+    <label>
+        Longitude:
+        <input type="number" [(ngModel)]="longitude" name="longitude" readonly />
+    </label>
+    <label>
+        Descrição:
+        <textarea [(ngModel)]="description" name="description"></textarea>
+    </label>
+    <button type="submit">Adicionar</button>
+    <button type="button" (click)="close()">Cancelar</button>
+    </form>
+</div>
