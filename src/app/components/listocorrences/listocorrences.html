@@ -1,0 +1,17 @@
+<h1>Lista de Ocorrências</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pessoa of lista">
+      <td>{{ pessoa.nome }}</td>
+      <td>{{ pessoa.endereco }}</td>
+    </tr>
+  </tbody>
+</table>
+
