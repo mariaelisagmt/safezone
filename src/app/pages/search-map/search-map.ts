@@ -1,4 +1,4 @@
-import { Component, importProvidersFrom } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MapComponent } from '../../components/map/map.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,9 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './search-map.scss',
 })
 export class SearchMap {
+  private fb = inject(FormBuilder);
   pesquisaForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor() {
     this.pesquisaForm = this.fb.group({
       tipo: [''],
       bairro: [''],

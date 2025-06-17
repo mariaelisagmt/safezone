@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IOcurrence } from '../interfaces/occurrence.interface';
@@ -8,9 +8,8 @@ import { environment } from '../../environment/environment';
   providedIn: 'root',
 })
 export class OcurrenceService {
+  private http = inject(HttpClient);
   private apiUrl = `${environment.apiUrl}/ocurrences`;
-
-  constructor(private http: HttpClient) {}
 
   getAll(): Observable<IOcurrence[]> {
     return this.http.get<IOcurrence[]>(this.apiUrl);

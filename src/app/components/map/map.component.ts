@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
@@ -14,10 +14,9 @@ import { catchError, map, of } from 'rxjs';
   styleUrl: './map.component.scss',
 })
 export class MapComponent implements OnInit, AfterViewInit {
+  private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
   private ocurrences: IOcurrence[] = [];
-
-  constructor(private ocurrenceService: OcurrenceService) {}
 
   ngOnInit(): void {
     this.loadOccurrences();
@@ -35,6 +34,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     }).addTo(this.map);
 
     // Geocoder (busca) - Melhorar Layout
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (L.Control as any)
       .geocoder({
         defaultMarkGeocode: true,
@@ -43,6 +43,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
     // Mapa de calor
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const heat = (L as any)
       .heatLayer(
         [
@@ -80,7 +81,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       heat.addTo(this.map);
     }
 
-    let areas: AreaComValor[] = [
+    const areas: AreaComValor[] = [
       {
         coordenadas: [
           [-23.55, -46.63],
