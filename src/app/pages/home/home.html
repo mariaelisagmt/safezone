@@ -6,10 +6,10 @@
     <h2 class="title">{{ title }}</h2>
     <p class="description">{{ description }}</p>
     <div class="buttons">
-      <button class="button rent-button" [routerLink]="['/search']" (click)="onSearchClick()">
+      <button class="button rent-button" [routerLink]="['/search']">
         {{ rentButtonText }}
       </button>
-      <button class="button buy-button" (click)="onReportClick()">{{ buyButtonText }}</button>
+      <button class="button buy-button">{{ buyButtonText }}</button>
     </div>
   </div>
 </div>
