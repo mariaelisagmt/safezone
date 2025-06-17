@@ -46,34 +46,20 @@ describe('SearchMap', () => {
   });
 
   it('should initialize the form with empty values', () => {
-    const formValue = component.pesquisaForm.value;
+    const formValue = component.searchForm.value;
     expect(formValue).toEqual({ tipo: '', bairro: '', data: '' });
   });
 
   it('should update form value when patching', () => {
-    component.pesquisaForm.patchValue({
+    component.searchForm.patchValue({
       tipo: 'Tipo A',
       bairro: 'Centro',
       data: '2025-06-17',
     });
-    expect(component.pesquisaForm.value).toEqual({
+    expect(component.searchForm.value).toEqual({
       tipo: 'Tipo A',
       bairro: 'Centro',
       data: '2025-06-17',
     });
-  });
-
-  it('should log value on onBuscar()', () => {
-    spyOn(console, 'log');
-    component.pesquisaForm.patchValue({
-      tipo: 'Tipo B',
-      bairro: 'Bairro X',
-      data: '2025-06-17',
-    });
-    component.onBuscar();
-    expect(console.log).toHaveBeenCalledWith(
-      'Pesquisa realizada com:',
-      component.pesquisaForm.value
-    );
   });
 });

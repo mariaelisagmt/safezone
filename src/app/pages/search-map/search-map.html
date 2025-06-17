@@ -1,24 +1,20 @@
 <div class="pesquisa-container">
   <h2>Pesquisar Ocorrências</h2>
 
-  <form (ngSubmit)="onBuscar()" class="form-container">
+  <form [formGroup]="searchForm" class="form-container">
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Tipo</mat-label>
-      <mat-select formControlName="tipo">
-        <mat-option *ngFor="let tipo of tipos" [value]="tipo"> {{ tipo }} </mat-option>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let option of typeOcorrenceOptions" [value]="option.value">
+          {{ option.label }}
+        </mat-option>
+
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Bairro</mat-label>
-      <input matInput formControlName="bairro" placeholder="Digite o bairro" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Data</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="data" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="address" placeholder="Digite o endereço" />
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit">
