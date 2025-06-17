@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddOccurrencemodal } from './add-occurrencemodal';
+import { AddOccurrenceModalComponent } from './add-occurrencemodal';
 
-describe('AddOccurrencemodal', () => {
-  let component: AddOccurrencemodal;
-  let fixture: ComponentFixture<AddOccurrencemodal>;
+describe('AddOccurrenceModalComponent', () => {
+  let component: AddOccurrenceModalComponent;
+  let fixture: ComponentFixture<AddOccurrenceModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddOccurrencemodal]
+      imports: [AddOccurrenceModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
-    fixture = TestBed.createComponent(AddOccurrencemodal);
+    fixture = TestBed.createComponent(AddOccurrenceModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

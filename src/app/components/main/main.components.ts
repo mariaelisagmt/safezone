@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main',
@@ -16,7 +17,8 @@ import { RouterOutlet } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    RouterOutlet 
+    MatSnackBarModule,
+    RouterOutlet
   ],
   templateUrl: './main.components.html',
   styleUrl: './main.components.scss'

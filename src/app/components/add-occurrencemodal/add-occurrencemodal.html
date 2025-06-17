@@ -2,19 +2,17 @@
 <div class="modal">
     <h2>Adicionar ocorrência</h2>
     <form (ngSubmit)="submit($event)">
-    <label>
-        Latitude:
-        <input type="number" [(ngModel)]="latitude" name="latitude" readonly />
-    </label>
-    <label>
-        Longitude:
-        <input type="number" [(ngModel)]="longitude" name="longitude" readonly />
-    </label>
-    <label>
-        Descrição:
-        <textarea [(ngModel)]="description" name="description"></textarea>
-    </label>
-    <button type="submit">Adicionar</button>
-    <button type="button" (click)="close()">Cancelar</button>
+        <input type="hidden" [(ngModel)]="latitude" name="latitude" readonly />
+        <input type="hidden" [(ngModel)]="longitude" name="longitude" readonly />
+        <label>
+            Título:
+            <input type="text" [(ngModel)]="title" name="title" />
+        </label>
+        <label>
+            Descrição:
+            <textarea [(ngModel)]="description" name="description"></textarea>
+        </label>
+        <button type="submit" id="add-occurrence-submit-button">Adicionar</button>
+        <button type="button" (click)="close()">Cancelar</button>
     </form>
 </div>

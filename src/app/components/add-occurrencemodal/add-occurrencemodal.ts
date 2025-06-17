@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 export class AddOccurrenceModalComponent {
   @Input() latitude!: number;
   @Input() longitude!: number;
-  @Output() submitted = new EventEmitter<{ latitude: number; longitude: number; description: string }>();
+  @Input() title!: string;
+  @Output() submitted = new EventEmitter<{ latitude: number; longitude: number; description: string; title: string }>();
   @Output() closed = new EventEmitter<void>();
 
   description = '';
@@ -19,9 +20,10 @@ export class AddOccurrenceModalComponent {
   submit(event: Event) {
     event.preventDefault();
     this.submitted.emit({
+      title: this.title,
       latitude: this.latitude,
       longitude: this.longitude,
-      description: this.description
+      description: this.description,
     });
     this.close();
   }

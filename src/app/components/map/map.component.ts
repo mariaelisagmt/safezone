@@ -8,6 +8,7 @@ import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
 import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-map',
@@ -25,6 +26,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   constructor(
     private ocurrenceService: OcurrenceService,
+    private snackBar: MatSnackBar,
     private cdr: ChangeDetectorRef
   ) { }
 
@@ -43,14 +45,28 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.cdr.detectChanges(); // Force Angular to update the view
   }
 
-  onModalSubmit(data: { latitude: number; longitude: number; description: string }) {
-    // Handle the submitted data (e.g., save occurrence)
-    console.log('Occurrence submitted:', data);
+  closeModal() {
     this.showModal = false;
   }
 
-  onModalClose() {
-    this.showModal = false;
+  onModalSubmit(data: { latitude: number; longitude: number; description: string }) {
+    // Handle the submitted data (e.g., save occurrence)
+    const submitBtn = document.getElementById('add-occurrence-submit-button') as HTMLButtonElement;
+    if (submitBtn) {
+      submitBtn.disabled = true; // Disable the button to prevent multiple submissions
+    }
+
+    console.log('Occurrence submitted:', data);
+
+    this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar-success']
+    });
+
+    submitBtn.disabled = false; // Re-enable the button after submission
+    this.closeModal();
   }
 
   private initMap(): void {
@@ -98,9 +114,9 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.map.on('click', (e) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
-      console.log(lat, lng);
+      console.log(lat.toFixed(5), lng.toFixed(5));
 
-      const popupContent = `<button id="openModalBtn">Adicionar ocorrência</button>`;
+      const popupContent = `Lat: ${lat.toFixed(5)}, Long: ${lng.toFixed(5)} </br><button id="openModalBtn">Adicionar ocorrência</button>`;
 
       const popup = L.popup()
         .setLatLng(e.latlng)
