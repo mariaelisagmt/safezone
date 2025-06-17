@@ -59,7 +59,9 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 ## Comandos
+
 LEAFLET
+
 - npm install leaflet ngx-leaflet leaflet.heat
 - npm install --save @types/leaflet
 - npm install leaflet-control-geocoder
@@ -67,6 +69,7 @@ LEAFLET
 - npm install --save-dev @types/leaflet
 
 Icones
+
 - npm install @fortawesome/fontawesome-free
 
 Instalação do eslint
@@ -74,11 +77,11 @@ ng add @angular-eslint/schematics
 npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
 
 Instalação do pacote base do angular material
-ng add @angular/material 
+ng add @angular/material
 npm install @angular/animations
 
-
 ### Rodando Backend Mockado (JSON-SERVER)
+
 npm install -g json-server
 npm install --save-dev json-server
 
@@ -86,19 +89,21 @@ Rodando
 json-server --watch db.json --port 3000
 
 ## Rodando o eslint - Análise de código estática
+
 ng lint ou npx eslint . --ext .ts,.html
 
 ## Rodando com o prettier - Análise de formatação e correção automática
+
 npm run lint
 npm run format
 
-
 ## Recursos:
+
 - Instalação do docker (testar)
 - Pipeline (testar)
 - Análise de código (lint + prettier -> manual ok -> testar automáticado)
 - Análise de segurança (eslint de segurança / sonarcube,
- SAST + DAST + Snyk + ESLint + Testes)
+  SAST + DAST + Snyk + ESLint + Testes)
 - Configuração de proteção de branchs e repositórios
 - Criação do CI/CD
 - Aprender a criar testes de frontend com angular

@@ -9,10 +9,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-search-map',
-  imports: [MapComponent,
+  imports: [
+    MapComponent,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -32,7 +32,7 @@ export class SearchMap {
     this.pesquisaForm = this.fb.group({
       tipo: [''],
       bairro: [''],
-      data: ['']
+      data: [''],
     });
   }
 

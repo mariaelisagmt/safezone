@@ -19,7 +19,7 @@ import { Footer } from '../footer/footer-components';
     MatListModule,
     RouterOutlet,
     Footer,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './main.components.html',
   styleUrl: './main.components.scss',

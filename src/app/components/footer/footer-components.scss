@@ -1,9 +1,9 @@
-@import "../../../styles/design-system.scss";
+@import '../../../styles/design-system.scss';
 
 footer {
   background-color: white;
-  border-top: 1px solid #d1d5db; 
-  font-size: 0.875rem; 
+  border-top: 1px solid #d1d5db;
+  font-size: 0.875rem;
   color: #374151;
   position: fixed;
   bottom: 0;
@@ -14,18 +14,18 @@ footer {
   z-index: 1000;
 
   .container {
-    max-width: 112rem; 
+    max-width: 112rem;
     margin: 0 auto;
-    padding: 2.5rem 1rem; 
+    padding: 2.5rem 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem; 
+    gap: 1.5rem;
 
-    @media (min-width: 640px) { 
+    @media (min-width: 640px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (min-width: 768px) { 
+    @media (min-width: 768px) {
       grid-template-columns: repeat(5, 1fr);
     }
   }
@@ -33,11 +33,11 @@ footer {
   .bottom-bar {
     border-top: 1px solid #d1d5db;
     padding: 1rem 1rem 1.5rem;
-    background-color: #f9fafb; 
+    background-color: #f9fafb;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
     justify-content: space-between;
 
     @media (min-width: 768px) {
@@ -52,7 +52,7 @@ footer {
       }
 
       a {
-        color: #0a3d62; 
+        color: #0a3d62;
         font-weight: 500;
         text-decoration: none;
         margin: 0 0.25rem;

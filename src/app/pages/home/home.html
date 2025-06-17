@@ -1,12 +1,14 @@
 <div class="search-section">
   <div class="image-container">
-    <img src="../../../assets/imgs/backgroup-map.png">
+    <img src="../../../assets/imgs/backgroup-map.png" />
   </div>
   <div class="content-container">
     <h2 class="title">{{ title }}</h2>
     <p class="description">{{ description }}</p>
     <div class="buttons">
-      <button class="button rent-button" [routerLink]="['/search']" (click)="onSearchClick()">{{ rentButtonText }}</button>
+      <button class="button rent-button" [routerLink]="['/search']" (click)="onSearchClick()">
+        {{ rentButtonText }}
+      </button>
       <button class="button buy-button" (click)="onReportClick()">{{ buyButtonText }}</button>
     </div>
   </div>
