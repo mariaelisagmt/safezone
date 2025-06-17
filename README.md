@@ -80,6 +80,9 @@ Instalação do pacote base do angular material
 ng add @angular/material
 npm install @angular/animations
 
+Instalando o zone para testes
+npm install zone.js --save 
+
 ### Rodando Backend Mockado (JSON-SERVER)
 
 npm install -g json-server
@@ -97,13 +100,18 @@ ng lint ou npx eslint . --ext .ts,.html
 npm run lint
 npm run format
 
+## Rodando testes 
+
+npm run test -- --watch=false --browsers=ChromeHeadless
+
 ## Recursos:
 
 - Instalação do docker (testar)
-- Pipeline (testar)
-- Análise de código (lint + prettier -> manual ok -> testar automáticado)
+- Pipeline (ok)
+- Análise de código (ok)
 - Análise de segurança (eslint de segurança / sonarcube,
   SAST + DAST + Snyk + ESLint + Testes)
-- Configuração de proteção de branchs e repositórios
-- Criação do CI/CD
-- Aprender a criar testes de frontend com angular
+- Configuração de proteção de branchs e repositórios (ok)
+- Criação do CI
+- Criaçao do CD
+- Aprender a criar testes de frontend com angular (ok)
