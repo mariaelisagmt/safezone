@@ -1,1 +1,11 @@
-<div id="mapa"></div>
+<div class="map-wrapper">
+  <div id="mapa"></div>
+  <app-add-occurrence-modal
+    id="add-occurrence-modal"
+    *ngIf="showModal"
+    [latitude]="modalLat"
+    [longitude]="modalLng"
+    (submitted)="onModalSubmit($event)"
+    (closed)="closeModal()"
+  ></app-add-occurrence-modal>
+</div>
