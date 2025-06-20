@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { MapComponent } from '../../components/map-search-occurrence/map.component';
+import { MapComponent } from '../../components/map/map.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TypeOcorrenceEnum } from '../../enums/type-ocurrence.enum';
 import { CommonModule } from '@angular/common';
-import { SearchAddressService } from '../../services/searchAddress.service';s
+import { SearchAddressService } from '../../services/searchAddress.service';
 
 @Component({
   selector: 'app-search-map',
