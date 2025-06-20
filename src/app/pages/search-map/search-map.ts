@@ -10,8 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TypeOcorrenceEnum } from '../../enums/type-ocurrence.enum';
 import { CommonModule } from '@angular/common';
-import { SearchAddressService } from '../../services/searchAddress.service';
-import { Subscription } from 'rxjs';
+import { SearchAddressService } from '../../services/searchAddress.service';s
 
 @Component({
   selector: 'app-search-map',
