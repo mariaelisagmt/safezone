@@ -2,83 +2,803 @@
   "ocurrences": [
     {
       "id": "1",
-      "height": -23.5505,
-      "width": -46.6333,
-      "amount": 12,
-      "icon": "🔥",
-      "color": "red"
-    },
-    {
-      "id": "2",
-      "height": -22.9068,
-      "width": -43.1729,
-      "amount": 7,
-      "icon": "🚨",
+      "height": -3.733579,
+      "width": -38.53705,
+      "amount": 8,
+      "icon": "💣",
       "color": "blue"
     },
     {
+      "id": "2",
+      "height": -3.734185,
+      "width": -38.537296,
+      "amount": 11,
+      "icon": "🚨",
+      "color": "yellow"
+    },
+    {
       "id": "3",
-      "height": -15.7942,
-      "width": -47.8822,
-      "amount": 4,
+      "height": -3.73447,
+      "width": -38.538581,
+      "amount": 12,
+      "icon": "🚨",
+      "color": "cyan"
+    },
+    {
+      "id": "4",
+      "height": -3.727155,
+      "width": -38.536925,
+      "amount": 10,
       "icon": "🛑",
       "color": "orange"
     },
     {
-      "id": "4",
-      "height": -30.0346,
-      "width": -51.2177,
-      "amount": 9,
-      "icon": "⚠️",
-      "color": "yellow"
-    },
-    {
       "id": "5",
-      "height": -3.7172,
-      "width": -38.5433,
-      "amount": 15,
-      "icon": "💥",
-      "color": "purple"
+      "height": -3.728082,
+      "width": -38.538276,
+      "amount": 3,
+      "icon": "🔧",
+      "color": "red"
     },
     {
       "id": "6",
-      "height": -19.9167,
-      "width": -43.9345,
+      "height": -3.729134,
+      "width": -38.541912,
+      "amount": 10,
+      "icon": "🚨",
+      "color": "purple"
+    },
+    {
+      "id": "7",
+      "height": -3.728391,
+      "width": -38.537704,
+      "amount": 12,
+      "icon": "💣",
+      "color": "blue"
+    },
+    {
+      "id": "8",
+      "height": -3.726951,
+      "width": -38.537842,
+      "amount": 7,
+      "icon": "🚨",
+      "color": "yellow"
+    },
+    {
+      "id": "9",
+      "height": -3.730423,
+      "width": -38.539535,
+      "amount": 15,
+      "icon": "💥",
+      "color": "green"
+    },
+    {
+      "id": "10",
+      "height": -3.726568,
+      "width": -38.538095,
+      "amount": 4,
+      "icon": "🔥",
+      "color": "gray"
+    },
+    {
+      "id": "11",
+      "height": -3.732403,
+      "width": -38.536087,
+      "amount": 5,
+      "icon": "🔔",
+      "color": "yellow"
+    },
+    {
+      "id": "12",
+      "height": -3.734643,
+      "width": -38.54367,
+      "amount": 13,
+      "icon": "🔥",
+      "color": "blue"
+    },
+    {
+      "id": "13",
+      "height": -3.733474,
+      "width": -38.543229,
+      "amount": 2,
+      "icon": "🔔",
+      "color": "yellow"
+    },
+    {
+      "id": "14",
+      "height": -3.729219,
+      "width": -38.537855,
+      "amount": 1,
+      "icon": "⚠️",
+      "color": "cyan"
+    },
+    {
+      "id": "15",
+      "height": -3.732024,
+      "width": -38.542844,
+      "amount": 2,
+      "icon": "🚨",
+      "color": "red"
+    },
+    {
+      "id": "16",
+      "height": -3.733264,
+      "width": -38.544866,
+      "amount": 3,
+      "icon": "🔥",
+      "color": "purple"
+    },
+    {
+      "id": "17",
+      "height": -3.728193,
+      "width": -38.542464,
+      "amount": 2,
+      "icon": "🔥",
+      "color": "cyan"
+    },
+    {
+      "id": "18",
+      "height": -3.732,
+      "width": -38.541238,
+      "amount": 13,
+      "icon": "🔧",
+      "color": "yellow"
+    },
+    {
+      "id": "19",
+      "height": -3.73486,
+      "width": -38.542914,
+      "amount": 6,
+      "icon": "🔥",
+      "color": "gray"
+    },
+    {
+      "id": "20",
+      "height": -3.728234,
+      "width": -38.54073,
+      "amount": 8,
+      "icon": "🚒",
+      "color": "green"
+    },
+    {
+      "id": "21",
+      "height": -3.729219,
+      "width": -38.535709,
+      "amount": 1,
+      "icon": "🚒",
+      "color": "yellow"
+    },
+    {
+      "id": "22",
+      "height": -3.730765,
+      "width": -38.536969,
+      "amount": 6,
+      "icon": "🚨",
+      "color": "red"
+    },
+    {
+      "id": "23",
+      "height": -3.730479,
+      "width": -38.537985,
+      "amount": 2,
+      "icon": "🚒",
+      "color": "gray"
+    },
+    {
+      "id": "24",
+      "height": -3.730232,
+      "width": -38.538267,
+      "amount": 9,
+      "icon": "🔔",
+      "color": "purple"
+    },
+    {
+      "id": "25",
+      "height": -3.72986,
+      "width": -38.542495,
+      "amount": 10,
+      "icon": "🚨",
+      "color": "cyan"
+    },
+    {
+      "id": "26",
+      "height": -3.729878,
+      "width": -38.539707,
+      "amount": 5,
+      "icon": "🚒",
+      "color": "cyan"
+    },
+    {
+      "id": "27",
+      "height": -3.730448,
+      "width": -38.543476,
+      "amount": 9,
+      "icon": "💣",
+      "color": "orange"
+    },
+    {
+      "id": "28",
+      "height": -3.729093,
+      "width": -38.540256,
+      "amount": 7,
+      "icon": "🛑",
+      "color": "red"
+    },
+    {
+      "id": "29",
+      "height": -3.728017,
+      "width": -38.535721,
+      "amount": 1,
+      "icon": "🛑",
+      "color": "gray"
+    },
+    {
+      "id": "30",
+      "height": -3.728423,
+      "width": -38.543907,
+      "amount": 9,
+      "icon": "🛑",
+      "color": "gray"
+    },
+    {
+      "id": "31",
+      "height": -3.729703,
+      "width": -38.539706,
+      "amount": 13,
+      "icon": "💣",
+      "color": "yellow"
+    },
+    {
+      "id": "32",
+      "height": -3.726237,
+      "width": -38.538897,
+      "amount": 10,
+      "icon": "🛑",
+      "color": "black"
+    },
+    {
+      "id": "33",
+      "height": -3.734564,
+      "width": -38.541597,
+      "amount": 9,
+      "icon": "🛑",
+      "color": "blue"
+    },
+    {
+      "id": "34",
+      "height": -3.728812,
+      "width": -38.538652,
+      "amount": 9,
+      "icon": "💡",
+      "color": "yellow"
+    },
+    {
+      "id": "35",
+      "height": -3.728367,
+      "width": -38.540553,
+      "amount": 11,
+      "icon": "🛑",
+      "color": "blue"
+    },
+    {
+      "id": "36",
+      "height": -3.734867,
+      "width": -38.544617,
+      "amount": 9,
+      "icon": "💣",
+      "color": "orange"
+    },
+    {
+      "id": "37",
+      "height": -3.730942,
+      "width": -38.539989,
+      "amount": 4,
+      "icon": "🔔",
+      "color": "green"
+    },
+    {
+      "id": "38",
+      "height": -3.730694,
+      "width": -38.536084,
+      "amount": 15,
+      "icon": "🚨",
+      "color": "cyan"
+    },
+    {
+      "id": "39",
+      "height": -3.732526,
+      "width": -38.543721,
+      "amount": 11,
+      "icon": "🔔",
+      "color": "cyan"
+    },
+    {
+      "id": "40",
+      "height": -3.726123,
+      "width": -38.54151,
+      "amount": 8,
+      "icon": "⚠️",
+      "color": "black"
+    },
+    {
+      "id": "41",
+      "height": -3.729909,
+      "width": -38.537161,
+      "amount": 2,
+      "icon": "💡",
+      "color": "yellow"
+    },
+    {
+      "id": "42",
+      "height": -3.731888,
+      "width": -38.535642,
+      "amount": 15,
+      "icon": "🔥",
+      "color": "blue"
+    },
+    {
+      "id": "43",
+      "height": -3.731305,
+      "width": -38.5445,
       "amount": 11,
       "icon": "🚒",
       "color": "red"
     },
     {
-      "id": "7",
-      "height": -8.0476,
-      "width": -34.877,
-      "amount": 3,
+      "id": "44",
+      "height": -3.731794,
+      "width": -38.541427,
+      "amount": 6,
+      "icon": "🔧",
+      "color": "blue"
+    },
+    {
+      "id": "45",
+      "height": -3.729959,
+      "width": -38.537752,
+      "amount": 7,
+      "icon": "🚒",
+      "color": "black"
+    },
+    {
+      "id": "46",
+      "height": -3.731234,
+      "width": -38.535551,
+      "amount": 4,
+      "icon": "⚠️",
+      "color": "yellow"
+    },
+    {
+      "id": "47",
+      "height": -3.727943,
+      "width": -38.541427,
+      "amount": 14,
       "icon": "🔔",
+      "color": "yellow"
+    },
+    {
+      "id": "48",
+      "height": -3.734097,
+      "width": -38.540715,
+      "amount": 5,
+      "icon": "💡",
+      "color": "black"
+    },
+    {
+      "id": "49",
+      "height": -3.72801,
+      "width": -38.539235,
+      "amount": 4,
+      "icon": "💡",
+      "color": "black"
+    },
+    {
+      "id": "50",
+      "height": -3.731864,
+      "width": -38.540263,
+      "amount": 14,
+      "icon": "💥",
+      "color": "purple"
+    },
+    {
+      "id": "51",
+      "height": -3.726386,
+      "width": -38.537866,
+      "amount": 10,
+      "icon": "🚨",
+      "color": "yellow"
+    },
+    {
+      "id": "52",
+      "height": -3.733768,
+      "width": -38.540591,
+      "amount": 6,
+      "icon": "🚒",
+      "color": "cyan"
+    },
+    {
+      "id": "53",
+      "height": -3.734846,
+      "width": -38.540311,
+      "amount": 4,
+      "icon": "💣",
+      "color": "yellow"
+    },
+    {
+      "id": "54",
+      "height": -3.732766,
+      "width": -38.5415,
+      "amount": 11,
+      "icon": "💡",
+      "color": "red"
+    },
+    {
+      "id": "55",
+      "height": -3.73446,
+      "width": -38.535958,
+      "amount": 11,
+      "icon": "🚨",
+      "color": "gray"
+    },
+    {
+      "id": "56",
+      "height": -3.73349,
+      "width": -38.542007,
+      "amount": 14,
+      "icon": "💣",
       "color": "green"
     },
     {
-      "id": "8",
-      "height": -1.4558,
-      "width": -48.4902,
+      "id": "57",
+      "height": -3.732326,
+      "width": -38.542795,
+      "amount": 7,
+      "icon": "🔧",
+      "color": "black"
+    },
+    {
+      "id": "58",
+      "height": -3.73038,
+      "width": -38.538442,
+      "amount": 8,
+      "icon": "💡",
+      "color": "gray"
+    },
+    {
+      "id": "59",
+      "height": -3.734015,
+      "width": -38.536082,
+      "amount": 10,
+      "icon": "⚠️",
+      "color": "green"
+    },
+    {
+      "id": "60",
+      "height": -3.729751,
+      "width": -38.53619,
       "amount": 6,
+      "icon": "🚨",
+      "color": "orange"
+    },
+    {
+      "id": "61",
+      "height": -3.732676,
+      "width": -38.535145,
+      "amount": 3,
+      "icon": "🔥",
+      "color": "yellow"
+    },
+    {
+      "id": "62",
+      "height": -3.734235,
+      "width": -38.539811,
+      "amount": 9,
+      "icon": "💣",
+      "color": "purple"
+    },
+    {
+      "id": "63",
+      "height": -3.728341,
+      "width": -38.535144,
+      "amount": 9,
+      "icon": "💡",
+      "color": "blue"
+    },
+    {
+      "id": "64",
+      "height": -3.730338,
+      "width": -38.542671,
+      "amount": 1,
+      "icon": "🚨",
+      "color": "cyan"
+    },
+    {
+      "id": "65",
+      "height": -3.726737,
+      "width": -38.536577,
+      "amount": 6,
+      "icon": "🔔",
+      "color": "blue"
+    },
+    {
+      "id": "66",
+      "height": -3.72685,
+      "width": -38.543996,
+      "amount": 4,
+      "icon": "🚒",
+      "color": "red"
+    },
+    {
+      "id": "67",
+      "height": -3.725238,
+      "width": -38.543161,
+      "amount": 5,
+      "icon": "🔧",
+      "color": "black"
+    },
+    {
+      "id": "68",
+      "height": -3.72618,
+      "width": -38.538138,
+      "amount": 15,
+      "icon": "🚨",
+      "color": "blue"
+    },
+    {
+      "id": "69",
+      "height": -3.731512,
+      "width": -38.54121,
+      "amount": 4,
+      "icon": "💡",
+      "color": "purple"
+    },
+    {
+      "id": "70",
+      "height": -3.734073,
+      "width": -38.538223,
+      "amount": 5,
+      "icon": "🛑",
+      "color": "cyan"
+    },
+    {
+      "id": "71",
+      "height": -3.733875,
+      "width": -38.535211,
+      "amount": 7,
+      "icon": "🛑",
+      "color": "purple"
+    },
+    {
+      "id": "72",
+      "height": -3.72849,
+      "width": -38.538746,
+      "amount": 4,
+      "icon": "⚠️",
+      "color": "gray"
+    },
+    {
+      "id": "73",
+      "height": -3.732818,
+      "width": -38.537675,
+      "amount": 6,
+      "icon": "🛑",
+      "color": "purple"
+    },
+    {
+      "id": "74",
+      "height": -3.728537,
+      "width": -38.539761,
+      "amount": 7,
+      "icon": "💡",
+      "color": "black"
+    },
+    {
+      "id": "75",
+      "height": -3.73073,
+      "width": -38.544662,
+      "amount": 10,
+      "icon": "🔧",
+      "color": "black"
+    },
+    {
+      "id": "76",
+      "height": -3.727066,
+      "width": -38.535401,
+      "amount": 4,
+      "icon": "⚠️",
+      "color": "orange"
+    },
+    {
+      "id": "77",
+      "height": -3.726777,
+      "width": -38.543359,
+      "amount": 14,
+      "icon": "🔧",
+      "color": "yellow"
+    },
+    {
+      "id": "78",
+      "height": -3.730685,
+      "width": -38.536014,
+      "amount": 5,
+      "icon": "💥",
+      "color": "blue"
+    },
+    {
+      "id": "79",
+      "height": -3.731229,
+      "width": -38.542494,
+      "amount": 7,
+      "icon": "🔥",
+      "color": "blue"
+    },
+    {
+      "id": "80",
+      "height": -3.729254,
+      "width": -38.544906,
+      "amount": 8,
+      "icon": "💣",
+      "color": "gray"
+    },
+    {
+      "id": "81",
+      "height": -3.731143,
+      "width": -38.543898,
+      "amount": 8,
+      "icon": "🛑",
+      "color": "green"
+    },
+    {
+      "id": "82",
+      "height": -3.729807,
+      "width": -38.539801,
+      "amount": 8,
+      "icon": "🔥",
+      "color": "blue"
+    },
+    {
+      "id": "83",
+      "height": -3.727676,
+      "width": -38.544187,
+      "amount": 8,
+      "icon": "🔥",
+      "color": "purple"
+    },
+    {
+      "id": "84",
+      "height": -3.730032,
+      "width": -38.543815,
+      "amount": 12,
+      "icon": "🔧",
+      "color": "yellow"
+    },
+    {
+      "id": "85",
+      "height": -3.731672,
+      "width": -38.535599,
+      "amount": 5,
+      "icon": "⚠️",
+      "color": "cyan"
+    },
+    {
+      "id": "86",
+      "height": -3.730652,
+      "width": -38.540761,
+      "amount": 10,
+      "icon": "🔔",
+      "color": "purple"
+    },
+    {
+      "id": "87",
+      "height": -3.728263,
+      "width": -38.53705,
+      "amount": 7,
+      "icon": "🚨",
+      "color": "orange"
+    },
+    {
+      "id": "88",
+      "height": -3.727738,
+      "width": -38.543215,
+      "amount": 15,
+      "icon": "💣",
+      "color": "orange"
+    },
+    {
+      "id": "89",
+      "height": -3.733289,
+      "width": -38.536353,
+      "amount": 1,
+      "icon": "⚠️",
+      "color": "orange"
+    },
+    {
+      "id": "90",
+      "height": -3.733139,
+      "width": -38.542372,
+      "amount": 8,
+      "icon": "🛑",
+      "color": "cyan"
+    },
+    {
+      "id": "91",
+      "height": -3.733249,
+      "width": -38.536236,
+      "amount": 13,
+      "icon": "🚨",
+      "color": "blue"
+    },
+    {
+      "id": "92",
+      "height": -3.734762,
+      "width": -38.540981,
+      "amount": 5,
+      "icon": "💥",
+      "color": "red"
+    },
+    {
+      "id": "93",
+      "height": -3.725998,
+      "width": -38.536882,
+      "amount": 9,
+      "icon": "🚨",
+      "color": "orange"
+    },
+    {
+      "id": "94",
+      "height": -3.728304,
+      "width": -38.53982,
+      "amount": 9,
+      "icon": "🔔",
+      "color": "orange"
+    },
+    {
+      "id": "95",
+      "height": -3.729641,
+      "width": -38.540853,
+      "amount": 6,
+      "icon": "🚒",
+      "color": "gray"
+    },
+    {
+      "id": "96",
+      "height": -3.731817,
+      "width": -38.543639,
+      "amount": 9,
       "icon": "💣",
       "color": "black"
     },
     {
-      "id": "9",
-      "height": -10.9472,
-      "width": -37.0731,
-      "amount": 8,
-      "icon": "🔧",
+      "id": "97",
+      "height": -3.730523,
+      "width": -38.536008,
+      "amount": 4,
+      "icon": "🛑",
+      "color": "red"
+    },
+    {
+      "id": "98",
+      "height": -3.726395,
+      "width": -38.537147,
+      "amount": 5,
+      "icon": "💣",
       "color": "gray"
     },
     {
-      "id": "10",
-      "height": -25.4284,
-      "width": -49.2733,
-      "amount": 5,
-      "icon": "💡",
-      "color": "cyan"
+      "id": "99",
+      "height": -3.728025,
+      "width": -38.537924,
+      "amount": 11,
+      "icon": "🚨",
+      "color": "purple"
+    },
+    {
+      "id": "100",
+      "height": -3.730439,
+      "width": -38.538553,
+      "amount": 15,
+      "icon": "🔧",
+      "color": "green"
     }
   ]
 }

@@ -2,7 +2,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IOcurrence } from '../interfaces/occurrence.interface';
 import { environment } from '../../environment/environment';
 
 @Injectable({
