@@ -14,7 +14,7 @@ import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
   templateUrl: './map-occurrence.component.html',
   styleUrl: './map-occurrence.component.scss',
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() addressToSearch: any;
 

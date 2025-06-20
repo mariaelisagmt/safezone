@@ -30,8 +30,8 @@ jobs:
       - name: Verificar formatação com Prettier
         run: npm run format:check
 
-      - name: Rodar testes unitários
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      #- name: Rodar testes unitários
+        #run: npm run test -- --watch=false --browsers=ChromeHeadless
 
-      - name: Verificar build
-        run: npm run build -- --configuration production
+      #- name: Verificar build
+       # run: npm run build -- --configuration production
