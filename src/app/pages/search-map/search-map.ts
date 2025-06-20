@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { MapComponent } from '../../components/map/map.component';
+import { MapComponent } from '../../components/map-search-occurrence/map.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -35,6 +35,9 @@ export class SearchMap {
   private form = inject(FormBuilder);
   private searchMap = inject(SearchAddressService);
   searchForm: FormGroup;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  addressForMap: any;
+
   typeOcorrenceOptions = Object.entries(TypeOcorrenceEnum)
     .filter(([key, value]) => isNaN(Number(key)))
     .map(([key, value]) => ({
@@ -50,9 +53,13 @@ export class SearchMap {
   }
 
   onBuscar() {
-    const filter = this.searchForm.get('address');
+    const filter = this.searchForm.get('address')?.value ?? '';
+
     this.searchMap.getAddress(filter).subscribe({
-      next: (data) => console.log('valor recebido', data),
+      next: (data) => {
+        this.addressForMap = data;
+        console.log('Endereço pesquisado:', data);
+      },
       error: (error) => console.error('erro', error),
       complete: () => console.log('finalizou!'),
     });

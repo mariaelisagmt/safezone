@@ -2,29 +2,36 @@
   <h2>Pesquisar Ocorrências</h2>
 
   <form [formGroup]="searchForm" class="form-container">
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Tipo</mat-label>
-      <mat-select formControlName="type">
-        <mat-option *ngFor="let option of typeOcorrenceOptions" [value]="option.value">
-          {{ option.label }}
-        </mat-option>
+    <div class="row">
+      <div class="col">
 
-      </mat-select>
-    </mat-form-field>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Pesquisar Endereço</mat-label>
+          <input matInput formControlName="address" placeholder="Digite o endereço" />
+        </mat-form-field>
+      </div>
+      <div class="col">
 
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Endereço</mat-label>
-      <input matInput formControlName="address" placeholder="Digite o endereço" />
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">
-      <mat-icon>search</mat-icon>
-      Buscar
-    </button>
-  </form>
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Tipo</mat-label>
+          <mat-select formControlName="type">
+            <mat-option *ngFor="let option of typeOcorrenceOptions" [value]="option.value">
+              {{ option.label }}
+            </mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <button mat-raised-button class="button-search" type="submit" (click)="onBuscar()">
+          <mat-icon>search</mat-icon>
+          Buscar
+        </button>
+      </div>
+      </div>
+    </form>
 
   <div class="map-section">
-    <p>Resultados no Mapa:</p>
-    <app-map></app-map>
+    <app-map [addressToSearch]="addressForMap"></app-map>
   </div>
 </div>

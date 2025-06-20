@@ -6,6 +6,7 @@ import 'leaflet-control-geocoder';
 import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
+import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
 
 @Component({
   selector: 'app-map',
@@ -20,6 +21,9 @@ export class MapComponent implements OnInit, AfterViewInit {
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
   private ocurrences: IOcurrence[] = [];
+
+  private heatPoints = L.layerGroup();
+  private ocurrencePoints = L.layerGroup();
 
   customIcon = L.icon({
     iconUrl: 'assets/custom-maker.svg',
@@ -38,7 +42,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['addressToSearch'] && changes['addressToSearch'].currentValue) {
       const newAddress = changes['addressToSearch'].currentValue;
-      const location = newAddress[0]; // ou como vier do seu serviço
+      const location = newAddress[0];
       const latlng = L.latLng(location.lat, location.lon);
       L.marker(latlng, { icon: this.customIcon }).addTo(this.map);
       this.map.setView(latlng, 15);
@@ -46,100 +50,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   private initMap(): void {
-    this.map = L.map('mapa').setView([-23.5505, -46.6333], 13); //Definindo local padrão
+    this.map = L.map('mapa').setView([-3.7304512, -38.5217989], 12); //Definindo local padrão - Fortaleza
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap',
     }).addTo(this.map);
-
-    // Mapa de calor
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const heat = (L as any)
-      .heatLayer(
-        [
-          [-23.5505, -46.6333, 0.5],
-          [-23.5605, -46.6433, 10],
-          [-23.5405, -46.6233, 70],
-        ],
-        {
-          radius: 50,
-          gradient: {
-            0.3: 'green',
-            0.6: 'yellow',
-            1.0: 'red',
-          },
-        }
-      )
-      .addTo(this.map);
-
-    this.map.on('zoomend', () => {
-      const currentZoom = this.map.getZoom();
-      console.log('Zom', currentZoom);
-      if (currentZoom >= 10 && currentZoom <= 15) {
-        if (!this.map.hasLayer(heat)) {
-          heat.addTo(this.map);
-        }
-      } else {
-        if (this.map.hasLayer(heat)) {
-          this.map.removeLayer(heat);
-        }
-      }
-    });
-
-    // Inicializa o mapa com o heatmap só se estiver no zoom certo
-    if (this.map.getZoom() >= 10 && this.map.getZoom() <= 15) {
-      heat.addTo(this.map);
-    }
-
-    const areas: AreaComValor[] = [
-      {
-        coordenadas: [
-          [-23.55, -46.63],
-          [-23.56, -46.63],
-          [-23.56, -46.64],
-          [-23.565, -46.655],
-          [-23.57, -46.66],
-          [-23.58, -46.66],
-          [-23.58, -46.67],
-        ],
-        valor: 50,
-      },
-      {
-        coordenadas: [
-          [-23.56, -46.62],
-          [-23.56, -46.63],
-          [-23.57, -46.63],
-          [-23.57, -46.62],
-        ],
-        valor: 90,
-      },
-    ];
-
-    areas.forEach((area) => {
-      L.polygon(area.coordenadas, {
-        // quadrado
-        color: 'black',
-        weight: 1,
-        fillColor: this.getCor(area.valor),
-        fillOpacity: 0.6,
-      }).addTo(this.map);
-    });
-
-    const pontos = [
-      { lat: -23.5505, lng: -46.6233, valor: 30 },
-      { lat: -23.5605, lng: -46.6133, valor: 70 },
-      { lat: -23.5405, lng: -46.6033, valor: 90 },
-    ];
-
-    pontos.forEach((p) => {
-      L.circle([p.lat, p.lng], {
-        radius: 500, // metros (ajuste conforme escala desejada)
-        color: 'transparent', // sem contorno
-        fillColor: this.getCor(p.valor),
-        fillOpacity: 0.4, // transparência
-      }).addTo(this.map);
-    });
   }
 
   loadOccurrences(): void {
@@ -154,22 +69,59 @@ export class MapComponent implements OnInit, AfterViewInit {
       )
       .subscribe((result) => {
         this.ocurrences = result;
-        this.plotOccurrenceOnMap();
+        this.defineOccurrenceOnMap();
+        this.plotHeatMap();
       });
   }
 
-  private plotOccurrenceOnMap() {
+  private defineOccurrenceOnMap() {
     this.ocurrences.forEach((ponto) => {
       const html = this.criarMarcadorHTML(ponto.icon, ponto.amount);
-      L.marker([ponto.height, ponto.width], {
+
+      const marker = L.marker([ponto.height, ponto.width], {
         icon: L.divIcon({
           className: '',
           html: html,
           iconSize: [80, 50],
           iconAnchor: [40, 50],
         }),
-      }).addTo(this.map);
+      });
+
+      this.ocurrencePoints.addLayer(marker);
     });
+  }
+
+  private plotHeatMap() {
+    const points = this.ocurrences.map((o) => {
+      return {
+        lat: o.height,
+        lng: o.width,
+      };
+    });
+    const result = calculateCentroidRadius(points);
+    const heat = L.circle([result.center.lat, result.center.lng], {
+      radius: result.radius, // metros (ajuste conforme escala desejada)
+      color: 'transparent', // sem contorno
+      fillColor: this.getCor(result.radius),
+      fillOpacity: 0.4, // transparência
+    });
+
+    this.heatPoints.addLayer(heat);
+
+    this.map.on('zoomend', () => {
+      const currentZoom = this.map.getZoom();
+      if (currentZoom >= 10 && currentZoom <= 16) {
+        if (!this.map.hasLayer(this.heatPoints)) this.heatPoints.addTo(this.map);
+        if (this.map.hasLayer(this.ocurrencePoints)) this.map.removeLayer(this.ocurrencePoints);
+      } else {
+        if (this.map.hasLayer(this.heatPoints)) this.map.removeLayer(this.heatPoints);
+        if (!this.map.hasLayer(this.ocurrencePoints)) this.ocurrencePoints.addTo(this.map);
+      }
+    });
+
+    if (this.map.getZoom() >= 10 && this.map.getZoom() <= 15) {
+      this.heatPoints.addTo(this.map);
+    }
   }
 
   private criarMarcadorHTML(icone: string, numero: number): string {
@@ -181,15 +133,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     `;
   }
 
-  getCor(valor: number): string {
+  private getCor(valor: number): string {
     if (valor >= 80) return 'red';
     if (valor >= 60) return 'orange';
     if (valor >= 40) return 'yellow';
     return 'green';
   }
-}
-
-interface AreaComValor {
-  coordenadas: [number, number][]; // array de [lat, lng]
-  valor: number;
 }
