@@ -6,7 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { Footer } from '../footer/footer-components';
+import { Footer } from '../footer/footer.components';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
@@ -17,6 +18,7 @@ import { Footer } from '../footer/footer-components';
     MatIconModule,
     MatButtonModule,
     MatListModule,
+    MatDialogModule,
     RouterOutlet,
     Footer,
     RouterModule,

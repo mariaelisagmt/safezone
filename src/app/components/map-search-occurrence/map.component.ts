@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, SimpleChanges, inject } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
@@ -14,9 +14,18 @@ import { catchError, map, of } from 'rxjs';
   styleUrl: './map.component.scss',
 })
 export class MapComponent implements OnInit, AfterViewInit {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input() addressToSearch: any;
+
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
   private ocurrences: IOcurrence[] = [];
+
+  customIcon = L.icon({
+    iconUrl: 'assets/custom-maker.svg',
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+  });
 
   ngOnInit(): void {
     this.loadOccurrences();
@@ -26,20 +35,22 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.initMap();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['addressToSearch'] && changes['addressToSearch'].currentValue) {
+      const newAddress = changes['addressToSearch'].currentValue;
+      const location = newAddress[0]; // ou como vier do seu serviço
+      const latlng = L.latLng(location.lat, location.lon);
+      L.marker(latlng, { icon: this.customIcon }).addTo(this.map);
+      this.map.setView(latlng, 15);
+    }
+  }
+
   private initMap(): void {
     this.map = L.map('mapa').setView([-23.5505, -46.6333], 13); //Definindo local padrão
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap',
     }).addTo(this.map);
-
-    // Geocoder (busca) - Melhorar Layout
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (L.Control as any)
-      .geocoder({
-        defaultMarkGeocode: true,
-      })
-      .addTo(this.map);
 
     // Mapa de calor
 
