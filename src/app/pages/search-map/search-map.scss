@@ -1,0 +1,97 @@
+.pesquisa-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #003366;
+  }
+
+  form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 2rem;
+  }
+
+  .map-section {
+    .map-simulacao {
+      height: 350px;
+      background: #e2e8f0;
+      border: 1px solid #ccc;
+      text-align: center;
+      line-height: 350px;
+      color: #666;
+    }
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.form-field {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+// Container geral do formulário
+.form-container {
+  width: 100%;
+}
+
+// A linha que contém nossas colunas
+.row {
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  gap: 16px; 
+}
+
+// Estilo para cada coluna (cada campo e o botão)
+.col {
+  flex: 1; 
+  min-width: 250px; 
+}
+
+// Garante que o Angular Material Form Field ocupe todo o espaço da coluna
+.form-field {
+  width: 100%;
+}
+
+// Estilo específico para a coluna do botão, para que ele não estique tanto
+.col button {
+  width: 100%; 
+  height: 52px; 
+}
+
+
+/* --- Media Query para Telas Pequenas (Celulares) --- */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column; 
+  }
+}
+
+
+.button-search {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  color: white !important;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+  background-color: #0b5ed7 !important;
+  margin-top: -20px !important;
+
+  .button-search:hover {
+    background-color: #003366 !important;
+  }
+
+}

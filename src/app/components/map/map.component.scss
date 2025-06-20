@@ -37,7 +37,6 @@
   user-select: none;
 }
 
-
 ::ng-deep .balao-fala {
   position: relative;
   background-color: rgb(166, 10, 10);
@@ -50,7 +49,7 @@
   align-items: center;
   gap: 8px;
 
-&::after {
+  &::after {
     content: '';
     position: absolute;
     bottom: -21px;
@@ -60,7 +59,7 @@
     color: white;
     border: 13px solid transparent;
     border-top-color: rgb(166, 10, 10);
-    }
+  }
 }
 
 /* Ícone arredondado */

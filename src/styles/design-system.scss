@@ -1,23 +1,23 @@
 :root {
   // Cores
-  --color-primary: #1E90FF;
+  --color-primary: #1e90ff;
   --color-secondary: #003366;
-  --color-third: #FF9800;
-  --color-success: #4CAF50;
-  --color-danger: #F44336;
+  --color-third: #ff9800;
+  --color-success: #4caf50;
+  --color-danger: #f44336;
   --color-background: #ffffff;
   --color-surface: #f5f5f5;
   --color-text: #212121;
-  --color-extra: #0A3D62;
+  --color-extra: #0a3d62;
 
   // Tipografia
   --font-family-base: 'Roboto', sans-serif;
-  --font-size-xs: 0.75rem;  // 12px
+  --font-size-xs: 0.75rem; // 12px
   --font-size-sm: 0.875rem; // 14px
-  --font-size-md: 1rem;     // 16px
-  --font-size-lg: 1.25rem;  // 20px
-  --font-size-xl: 1.5rem;   // 24px
-  
+  --font-size-md: 1rem; // 16px
+  --font-size-lg: 1.25rem; // 20px
+  --font-size-xl: 1.5rem; // 24px
+
   --font-weight-baixo: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -50,20 +50,20 @@
   --btn-height-sm: 32px;
   --btn-height-md: 40px;
   --btn-height-lg: 48px;
-  
+
   //Inputs
   --input-height-sm: 32px;
   --input-height-md: 40px;
   --input-height-lg: 48px;
-  
+
   //Espaçamento
   --spacing-xxs: 0.25rem; // 4px
-  --spacing-xs: 0.5rem;   // 8px
-  --spacing-sm: 1rem;     // 16px
-  --spacing-md: 1.5rem;   // 24px
-  --spacing-lg: 2rem;     // 32px
-  --spacing-xl: 3rem;     // 48px
-  
+  --spacing-xs: 0.5rem; // 8px
+  --spacing-sm: 1rem; // 16px
+  --spacing-md: 1.5rem; // 24px
+  --spacing-lg: 2rem; // 32px
+  --spacing-xl: 3rem; // 48px
+
   --line-height-base: 1.5;
 }
 

@@ -1,0 +1,37 @@
+name: CI - Lint, Test & Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  angular-ci:
+    name: Angular CI Pipeline
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.16.0
+          cache: 'npm'
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Verificar ESLint
+        run: npm run lint
+
+      - name: Verificar formatação com Prettier
+        run: npm run format:check
+
+      #- name: Rodar testes unitários
+        #run: npm run test -- --watch=false --browsers=ChromeHeadless
+
+      #- name: Verificar build
+       # run: npm run build -- --configuration production

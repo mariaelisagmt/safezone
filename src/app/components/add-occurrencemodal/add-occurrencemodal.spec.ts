@@ -8,9 +8,8 @@ describe('AddOccurrenceModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddOccurrenceModalComponent]
-    })
-      .compileComponents();
+      imports: [AddOccurrenceModalComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AddOccurrenceModalComponent);
     component = fixture.componentInstance;
