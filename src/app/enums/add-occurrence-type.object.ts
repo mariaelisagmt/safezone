@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable prettier/prettier */
 export const AddOccurrenceTypeObject = {
     "Homicídio": 1,
     "Assalto": 2,

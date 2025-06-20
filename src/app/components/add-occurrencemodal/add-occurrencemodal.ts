@@ -19,20 +19,26 @@ import { AddOccurrenceTypeObject } from '../../enums/add-occurrence-type.object'
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+  ],
 })
 export class AddOccurrenceModalComponent {
   @Input() latitude!: number;
   @Input() longitude!: number;
   @Input() title!: string;
-  @Output() submitted = new EventEmitter<{ title: string; latitude: number; longitude: number; type: string; description: string; }>();
+  @Output() submitted = new EventEmitter<{
+    title: string;
+    latitude: number;
+    longitude: number;
+    type: string;
+    description: string;
+  }>();
   @Output() closed = new EventEmitter<void>();
 
   description = '';
   selectedType = '';
 
-  typeOptions = Object.entries(AddOccurrenceTypeObject)
+  typeOptions = Object.entries(AddOccurrenceTypeObject);
 
   submit(event: Event) {
     event.preventDefault();
