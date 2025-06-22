@@ -81,7 +81,7 @@ ng add @angular/material
 npm install @angular/animations
 
 Instalando o zone para testes
-npm install zone.js --save 
+npm install zone.js --save
 
 ### Rodando Backend Mockado (JSON-SERVER)
 
@@ -100,7 +100,7 @@ ng lint ou npx eslint . --ext .ts,.html
 npm run lint
 npm run format
 
-## Rodando testes 
+## Rodando testes
 
 npm run test -- --watch=false --browsers=ChromeHeadless
 

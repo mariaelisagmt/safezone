@@ -8,9 +8,8 @@ describe('Listocorrences', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Listocorrences]
-    })
-    .compileComponents();
+      imports: [Listocorrences],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Listocorrences);
     component = fixture.componentInstance;
