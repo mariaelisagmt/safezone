@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { Footer } from '../footer/footer.components';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
@@ -16,12 +18,14 @@ import { RouterOutlet } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    RouterOutlet 
+    MatDialogModule,
+    RouterOutlet,
+    Footer,
+    RouterModule,
   ],
   templateUrl: './main.components.html',
-  styleUrl: './main.components.scss'
+  styleUrl: './main.components.scss',
 })
-
 export class MainComponent {
   menuAberto = false;
 

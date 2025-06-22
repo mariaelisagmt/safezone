@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './listocorrences.scss'
 })
 export class Listocorrences {
-   lista = [
+  lista = [
     { titulo: 'Ocorrência 1', descricao: 'Descrição da ocorrência 1', tipo_ocorrencia: 'assalto', data: '10/06/2025', hora: '12:00', usuario: 'Usuário 1', data_criacao: '10/06/2025 12:00',longitude: -46.625290, latitude: -23.533773, endereco:'Rua fulano de tal'},
     { titulo: 'Ocorrência 2', descricao: 'Descrição da ocorrência 2', tipo_ocorrencia: 'furto', data: '10/06/2025', hora: '13:00', usuario: 'Usuário 2', data_criacao: '10/06/2025 13:00',longitude: -46.625290, latitude: -23.533773, endereco:'Rua beltrano de tal'},
     { titulo: 'Ocorrência 3', descricao: 'Descrição da ocorrência 3', tipo_ocorrencia: 'vandalismo', data: '10/06/2025', hora: '14:00', usuario: 'Usuário 3', data_criacao: '10/06/2025 14:00',longitude: -46.625290, latitude: -23.533773, endereco:'Rua cicrano de tal'},
@@ -20,6 +20,17 @@ export class Listocorrences {
     { titulo: 'Ocorrência 9', descricao: 'Descrição da ocorrência 9', tipo_ocorrencia: 'vandalismo', data: '10/06/2025', hora: '20:00', usuario: 'Usuário 9', data_criacao: '10/06/2025 20:00',longitude: -46.625290, latitude: -23.533773, endereco:'Rua fulano de tal'},
     { titulo: 'Ocorrência 10', descricao: 'Descrição da ocorrência 10', tipo_ocorrencia: 'assalto', data: '10/06/2025', hora: '21:00', usuario: 'Usuário 10', data_criacao: '10/06/2025 21:00',longitude: -46.625290, latitude: -23.533773, endereco:'Rua beltrano de tal'}
   ];
+
+  editarOcorrencia(index: number) {
+    const ocorrencia = this.lista[index];
+    alert(`Editar ocorrência: ${ocorrencia.titulo}`);
+  }
+
+  excluirOcorrencia(index: number) {
+    if (confirm('Deseja realmente excluir esta ocorrência?')) {
+      this.lista.splice(index, 1);
+    }
+  }
 }
 
 

@@ -14,10 +14,11 @@
           <th>Longitude</th>
           <th>Latitude</th>
           <th>Endereço</th>
+          <th>Ações</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pessoa of lista">
+        <tr *ngFor="let pessoa of lista; let i = index">
           <td>{{ pessoa.titulo }}</td>
           <td>{{ pessoa.descricao }}</td>
           <td>{{ pessoa.tipo_ocorrencia }}</td>
@@ -28,6 +29,10 @@
           <td>{{ pessoa.longitude }}</td>
           <td>{{ pessoa.latitude }}</td>
           <td>{{ pessoa.endereco }}</td>
+          <td> 
+            <button class="btn editar" (click)="editarOcorrencia(i)">Editar</button>
+            <button class="btn excluir" (click)="excluirOcorrencia(i)">Excluir</button>
+          </td>
         </tr>
       </tbody>
     </table>

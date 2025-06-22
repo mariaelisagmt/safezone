@@ -20,12 +20,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
               "node_modules/leaflet/dist/leaflet.css",
@@ -83,16 +78,20 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles.scss"
-            ]
+            "styles": ["@angular/material/prebuilt-themes/azure-blue.css", "src/styles.scss"]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "3c4eed3a-d86c-4325-b57e-9cb703908912"
+    "analytics": "3c4eed3a-d86c-4325-b57e-9cb703908912",
+    "schematicCollections": ["angular-eslint", "@schematics/angular"]
   }
 }

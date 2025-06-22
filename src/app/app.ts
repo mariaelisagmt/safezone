@@ -4,7 +4,7 @@ import { MainComponent } from './components/main/main.components';
   selector: 'app-root',
   imports: [MainComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected title = 'safezone-frontend';

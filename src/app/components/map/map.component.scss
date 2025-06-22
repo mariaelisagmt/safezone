@@ -1,5 +1,16 @@
 #mapa {
   height: 600px;
+  position: relative;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 600px;
+}
+#mapa {
+  height: 100%;
+  position: relative;
 }
 
 .marker-number {
@@ -26,7 +37,6 @@
   user-select: none;
 }
 
-
 ::ng-deep .balao-fala {
   position: relative;
   background-color: rgb(166, 10, 10);
@@ -39,7 +49,7 @@
   align-items: center;
   gap: 8px;
 
-&::after {
+  &::after {
     content: '';
     position: absolute;
     bottom: -21px;
@@ -49,7 +59,7 @@
     color: white;
     border: 13px solid transparent;
     border-top-color: rgb(166, 10, 10);
-    }
+  }
 }
 
 /* Ícone arredondado */
