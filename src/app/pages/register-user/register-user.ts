@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,11 +10,12 @@ import { MatInputModule } from '@angular/material/input';
   templateUrl: './register-user.html',
   styleUrls: ['./register-user.scss'],
 })
-export class RegisterComponent {
+export class RegisterUserComponent {
+  private form = inject(FormBuilder);
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
+  constructor() {
+    this.registerForm = this.form.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],

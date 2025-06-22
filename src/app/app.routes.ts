@@ -5,7 +5,7 @@ import { Home } from './pages/home/home';
 import { SearchMap } from './pages/search-map/search-map';
 import { MapComponent } from './components/map/map.component';
 import { LoginComponent } from './pages/login/login';
-import { RegisterComponent } from './pages/register-user/register-user';
+import { RegisterUserComponent } from './pages/register-user/register-user';
 import { SettingsComponent } from './pages/settings/settings';
 
 export const routes: Routes = [
@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: 'search', component: SearchMap },
   { path: 'add', component: MapComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'register', component: RegisterUserComponent },
   { path: 'config', component: SettingsComponent },
   { path: 'logout', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-settings',
-  imports: [],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   templateUrl: './settings.html',
   styleUrl: './settings.scss',
 })
 export class SettingsComponent {
+  private form = inject(FormBuilder);
+
   settingsForm: FormGroup;
   isDarkMode = false;
 
-  constructor(private fb: FormBuilder) {
-    this.settingsForm = this.fb.group({
+  constructor() {
+    this.settingsForm = this.form.group({
       name: ['Maria Elisa', Validators.required],
       email: ['maria.elisa@example.com', [Validators.required, Validators.email]],
       defaultAddress: ['Fortaleza, CE'],

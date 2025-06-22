@@ -1,4 +1,14 @@
 {
+  "user":[
+    {
+      "id": 1,
+      "name": "Alice Souza",
+      "email": "alice.souza@example.com",
+      "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
+      "token": "token-1"
+    }
+  ],
+  "login": true,
   "ocurrences": [
     {
       "id": "1",

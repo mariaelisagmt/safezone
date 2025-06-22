@@ -17,10 +17,6 @@
       <input matInput placeholder="Endereço" formControlName="defaultAddress">
     </mat-form-field>
 
-    <mat-slide-toggle [(ngModel)]="isDarkMode" (change)="toggleDarkMode()">
-      Modo Escuro
-    </mat-slide-toggle>
-
     <button mat-raised-button color="primary" (click)="saveSettings()" [disabled]="!settingsForm.valid">
       Salvar Configurações
     </button>

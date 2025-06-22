@@ -3,57 +3,54 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
+import { IUser } from '../interfaces/user.interface';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/user`;
-
-  private apiUrl = 'https://api.seuservidor.com/users';
-  private currentUserSubject = new BehaviorSubject<User | null>(null);
+  private apiUrl = `${environment.apiUrl}/users`;
+  private currentUserSubject = new BehaviorSubject<IUser | null>(null);
 
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(private http: HttpClient) {
+  constructor() {
     const userJson = localStorage.getItem('currentUser');
     if (userJson) {
       this.currentUserSubject.next(JSON.parse(userJson));
     }
   }
 
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, { email, password })
-      .pipe(
-        tap(user => {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        })
-      );
+  login(email: string, password: string): Observable<IUser> {
+    return this.http.post<IUser>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap((user) => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      })
+    );
   }
 
-  register(userData: Partial<User> & { password: string }): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, userData)
-      .pipe(
-        tap(user => {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          this.currentUserSubject.next(user);
-        })
-      );
+  register(userData: Partial<IUser> & { password: string }): Observable<IUser> {
+    return this.http.post<IUser>(`${this.apiUrl}/register`, userData).pipe(
+      tap((user) => {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+      })
+    );
   }
 
-  updateProfile(userData: Partial<User>): Observable<User> {
+  updateProfile(userData: Partial<IUser>): Observable<IUser> {
     const current = this.currentUserSubject.value;
-    if (!current) throw new Error('User not authenticated');
+    if (!current) throw new Error('Usuário não autorizado.');
 
-    return this.http.put<User>(`${this.apiUrl}/${current.id}`, userData)
-      .pipe(
-        tap(updatedUser => {
-          const merged = { ...current, ...updatedUser };
-          localStorage.setItem('currentUser', JSON.stringify(merged));
-          this.currentUserSubject.next(merged);
-        })
-      );
+    return this.http.put<IUser>(`${this.apiUrl}/${current.id}`, userData).pipe(
+      tap((updatedUser) => {
+        const merged = { ...current, ...updatedUser };
+        localStorage.setItem('currentUser', JSON.stringify(merged));
+        this.currentUserSubject.next(merged);
+      })
+    );
   }
 
   logout(): void {
@@ -68,5 +65,4 @@ export class UserService {
   getToken(): string | null {
     return this.currentUserSubject.value?.token || null;
   }
-
 }

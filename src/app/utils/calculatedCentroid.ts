@@ -1,21 +1,10 @@
-export interface ICoord {
-  lat: number;
-  lng: number;
-}
-
-export interface ClusterResult {
-  id: number;
-  center: ICoord;
-  radius: number;
-  members: ICoord[];
-  classify: number;
-}
+import { IClusterResult } from '../interfaces/cluster-result.interface';
 
 /**
  * Agrupa pontos em K clusters usando k-means aproximado.
  * Retorna cada cluster com centroide + raio.
  */
-export function calculateNClusters(points: ICoord[], k: number): ClusterResult[] {
+export function calculateNClusters(points: ICoord[], k: number): IClusterResult[] {
   if (points.length === 0 || k <= 0) return [];
 
   // Passo 1: inicializar centróides aleatórios
@@ -62,7 +51,7 @@ export function calculateNClusters(points: ICoord[], k: number): ClusterResult[]
     iterations++;
   }
   // Passo 4: calcular raio de cada cluster
-  const results: ClusterResult[] = [];
+  const results: IClusterResult[] = [];
   for (let i = 0; i < k; i++) {
     const members = clusters[i];
     if (members.length === 0) continue;
