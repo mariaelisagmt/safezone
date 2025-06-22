@@ -9,6 +9,12 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { Footer } from '../footer/footer.components';
 import { MatDialogModule } from '@angular/material/dialog';
 
+interface User {
+  name: string;
+  email: string;
+  avatarUrl: string;
+}
+
 @Component({
   selector: 'app-main',
   imports: [
@@ -28,6 +34,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 })
 export class MainComponent {
   menuAberto = false;
+
+  user: User | null = {
+    name: 'Maria Elisa',
+    email: 'maria.elisa@example.com',
+    avatarUrl: 'https://i.pravatar.cc/150?img=5',
+  };
+
+  logout() {
+    // aqui você implementa a lógica de logout, por exemplo limpar token
+    console.log('User logged out');
+  }
 
   toggleMenu() {
     this.menuAberto = !this.menuAberto;

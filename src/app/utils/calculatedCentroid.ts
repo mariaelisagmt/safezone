@@ -19,7 +19,7 @@ export function calculateNClusters(points: ICoord[], k: number): ClusterResult[]
   if (points.length === 0 || k <= 0) return [];
 
   // Passo 1: inicializar centróides aleatórios
-  let centroids: ICoord[] = [];
+  const centroids: ICoord[] = [];
   for (let i = 0; i < k; i++) {
     centroids.push(points[Math.floor(Math.random() * points.length)]);
   }

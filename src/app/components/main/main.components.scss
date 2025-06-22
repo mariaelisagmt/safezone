@@ -36,3 +36,33 @@ mat-toolbar {
 .ativo{
   background-color: #0033665d;
 }
+
+/* sidebar.component.scss */
+.sidenav-container {
+  height: 100%;
+}
+
+.user-info {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+
+  .user-details {
+    h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+}
