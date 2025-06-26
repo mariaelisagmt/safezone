@@ -47,16 +47,16 @@
 
 // A linha que contém nossas colunas
 .row {
-  display: flex; 
-  flex-wrap: wrap; 
-  align-items: center; 
-  gap: 16px; 
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
 }
 
 // Estilo para cada coluna (cada campo e o botão)
 .col {
-  flex: 1; 
-  min-width: 250px; 
+  flex: 1;
+  min-width: 250px;
 }
 
 // Garante que o Angular Material Form Field ocupe todo o espaço da coluna
@@ -66,18 +66,16 @@
 
 // Estilo específico para a coluna do botão, para que ele não estique tanto
 .col button {
-  width: 100%; 
-  height: 52px; 
+  width: 100%;
+  height: 52px;
 }
-
 
 /* --- Media Query para Telas Pequenas (Celulares) --- */
 @media (max-width: 768px) {
   .row {
-    flex-direction: column; 
+    flex-direction: column;
   }
 }
-
 
 .button-search {
   padding: 12px 24px;
@@ -93,5 +91,4 @@
   .button-search:hover {
     background-color: #003366 !important;
   }
-
 }
