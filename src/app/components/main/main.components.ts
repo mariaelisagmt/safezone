@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,12 +8,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { Footer } from '../footer/footer.components';
 import { MatDialogModule } from '@angular/material/dialog';
-
-interface User {
-  name: string;
-  email: string;
-  avatarUrl: string;
-}
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-main',
@@ -33,17 +29,19 @@ interface User {
   styleUrl: './main.components.scss',
 })
 export class MainComponent {
+  private userService = inject(UserService);
+
+  user: IUser | null = null;
   menuAberto = false;
 
-  user: User | null = {
-    name: 'Maria Elisa',
-    email: 'maria.elisa@example.com',
-    avatarUrl: 'https://i.pravatar.cc/150?img=5',
-  };
+  ngOnInit(): void {
+    this.userService.currentUser$.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   logout() {
-    // aqui você implementa a lógica de logout, por exemplo limpar token
-    console.log('User logged out');
+    this.userService.logout();
   }
 
   toggleMenu() {

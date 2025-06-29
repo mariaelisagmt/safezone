@@ -3,10 +3,10 @@ import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
 
-import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
 import { calculateNClusters } from '../../utils/calculatedCentroid';
+import { IOcurrenceGroup } from '../../interfaces/occurrenceGroup.interface';
 
 @Component({
   selector: 'app-map-occurrence',
@@ -20,7 +20,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
-  private ocurrences: IOcurrence[] = [];
+  private ocurrences: IOcurrenceGroup[] = [];
 
   private heatPoints = L.layerGroup();
   private ocurrencePoints = L.layerGroup();
@@ -78,7 +78,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     this.ocurrences.forEach((ponto) => {
       const html = this.criarMarcadorHTML(ponto.icon, ponto.amount);
 
-      const marker = L.marker([ponto.height, ponto.width], {
+      const marker = L.marker([ponto.latitude, ponto.longitude], {
         icon: L.divIcon({
           className: '',
           html: html,
@@ -94,8 +94,8 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   private plotHeatMap() {
     const points = this.ocurrences.map((o) => {
       return {
-        lat: o.height,
-        lng: o.width,
+        lat: o.latitude,
+        lng: o.longitude,
       };
     });
     const result = calculateNClusters(points, 3);
@@ -107,7 +107,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
         fillColor: this.getCor(cluster.classify),
         fillOpacity: 0.4, // transparência
       });
-  
+
       this.heatPoints.addLayer(heat);
     });
 
@@ -121,9 +121,9 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
         if (this.map.hasLayer(this.ocurrencePoints)) this.map.removeLayer(this.ocurrencePoints);
       } else {
         if (this.map.hasLayer(this.heatPoints)) this.map.removeLayer(this.heatPoints);
-        // if(//currentZoom > maximum && 
-        //   !this.map.hasLayer(this.ocurrencePoints)) 
-          this.ocurrencePoints.addTo(this.map);
+        // if(//currentZoom > maximum &&
+        //   !this.map.hasLayer(this.ocurrencePoints))
+        this.ocurrencePoints.addTo(this.map);
       }
     });
 
@@ -142,7 +142,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   }
 
   private getCor(valor: number): string {
-    switch(valor){
+    switch (valor) {
       case 1:
         return 'red';
       case 2:

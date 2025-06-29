@@ -65,4 +65,5 @@ export class UserService {
   getToken(): string | null {
     return this.currentUserSubject.value?.token || null;
   }
+
 }
