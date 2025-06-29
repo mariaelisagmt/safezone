@@ -8,7 +8,145 @@
       "token": "token-1"
     }
   ],
-  "login": true,
+  "login": {
+      "id": 1,
+      "name": "Alice Souza",
+      "email": "alice.souza@example.com",
+      "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
+      "token": "token-1"
+    },
+  "ocurrencesUser":[
+    {
+      "id": "1",
+      "title": "Ocorrência 1",
+      "description": "Descrição da ocorrência 1",
+      "type": 1,
+      "date": "10/06/2025",
+      "hour": "12:00",
+      "userId": "Usuário 1",
+      "criatedAt": "2025-06-10T12:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua fulano de tal"
+    },
+    {
+      "id": "2",
+      "title": "Ocorrência 2",
+      "description": "Descrição da ocorrência 2",
+      "type": 2,
+      "date": "10/06/2025",
+      "hour": "13:00",
+      "userId": "Usuário 2",
+      "criatedAt": "2025-06-10T13:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua beltrano de tal"
+    },
+    {
+      "id": "3",
+      "title": "Ocorrência 3",
+      "description": "Descrição da ocorrência 3",
+      "type": 3,
+      "date": "10/06/2025",
+      "hour": "14:00",
+      "userId": "Usuário 3",
+      "criatedAt": "2025-06-10T14:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua cicrano de tal"
+    },
+    {
+      "id": "4",
+      "title": "Ocorrência 4",
+      "description": "Descrição da ocorrência 4",
+      "type": 1,
+      "date": "10/06/2025",
+      "hour": "15:00",
+      "userId": "Usuário 4",
+      "criatedAt": "2025-06-10T15:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua sicrano de tal"
+    },
+    {
+      "id": "5",
+      "title": "Ocorrência 5",
+      "description": "Descrição da ocorrência 5",
+      "type": 2,
+      "date": "10/06/2025",
+      "hour": "16:00",
+      "userId": "Usuário 5",
+      "criatedAt": "2025-06-10T16:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua fulano de tal"
+    },
+    {
+      "id": "6",
+      "title": "Ocorrência 6",
+      "description": "Descrição da ocorrência 6",
+      "type": 3,
+      "date": "10/06/2025",
+      "hour": "17:00",
+      "userId": "Usuário 6",
+      "criatedAt": "2025-06-10T17:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua beltrano de tal"
+    },
+    {
+      "id": "7",
+      "title": "Ocorrência 7",
+      "description": "Descrição da ocorrência 7",
+      "type": 1,
+      "date": "10/06/2025",
+      "hour": "18:00",
+      "userId": "Usuário 7",
+      "criatedAt": "2025-06-10T18:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua cicrano de tal"
+    },
+    {
+      "id": "8",
+      "title": "Ocorrência 8",
+      "description": "Descrição da ocorrência 8",
+      "type": 2,
+      "date": "10/06/2025",
+      "hour": "19:00",
+      "userId": "Usuário 8",
+      "criatedAt": "2025-06-10T19:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua sicrano de tal"
+    },
+    {
+      "id": "9",
+      "title": "Ocorrência 9",
+      "description": "Descrição da ocorrência 9",
+      "type": 3,
+      "date": "10/06/2025",
+      "hour": "20:00",
+      "userId": "Usuário 9",
+      "criatedAt": "2025-06-10T20:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua fulano de tal"
+    },
+    {
+      "id": "10",
+      "title": "Ocorrência 10",
+      "description": "Descrição da ocorrência 10",
+      "type": 1,
+      "date": "10/06/2025",
+      "hour": "21:00",
+      "userId": "Usuário 10",
+      "criatedAt": "2025-06-10T21:00:00",
+      "longitude": -46.62529,
+      "latitude": -23.533773,
+      "adress": "Rua beltrano de tal"
+    }
+  ],
   "ocurrences": [
     {
       "id": "1",
