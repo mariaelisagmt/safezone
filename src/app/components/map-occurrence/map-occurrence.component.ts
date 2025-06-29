@@ -1,4 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, SimpleChanges, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
@@ -69,7 +77,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
       submitBtn.disabled = true; // Disable the button to prevent multiple submissions
     }
 
-    console.log('Occurrence submitted:', data);  // TODO: remover depois: console.log de debug
+    console.log('Occurrence submitted:', data); // TODO: remover depois: console.log de debug
 
     this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
       duration: 2000,

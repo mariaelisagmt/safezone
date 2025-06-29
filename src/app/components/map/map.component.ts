@@ -23,7 +23,7 @@ import { SearchAddressService } from '../../services/searchAddress.service';
 export class MapComponent implements OnInit, AfterViewInit {
   private map!: L.Map;
   private ocurrences: IOcurrence[] = [];
-  private searchAddressService = inject(SearchAddressService)
+  private searchAddressService = inject(SearchAddressService);
 
   showModal = false;
   modalLat = 0;
@@ -33,7 +33,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     private ocurrenceService: OcurrenceService,
     private snackBar: MatSnackBar,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadOccurrences();

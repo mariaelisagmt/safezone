@@ -1,22 +1,20 @@
 import * as L from 'leaflet';
 import { AddressData } from '../models/addressdata.model';
+import { SearchAddressService } from '../services/searchAddress.service';
 
 export function showAddressPopup(
   map: L.Map,
   lat: number,
   lng: number,
-  searchAddressService: any,
+  searchAddressService: SearchAddressService,
   openModal: (lat: number, lng: number, address: string) => void
 ) {
   let clickedAddress = '';
 
-  const popup = L.popup()
-    .setLatLng([lat, lng])
-    .setContent('Carregando endereço...')
-    .openOn(map);
+  const popup = L.popup().setLatLng([lat, lng]).setContent('Carregando endereço...').openOn(map);
 
   searchAddressService.getAddressByLatLng(lat, lng).subscribe({
-    next: (data: any) => {
+    next: (data: AddressData) => {
       clickedAddress = new AddressData(data).getAddress();
       const popupContent = `
         <div style="text-align: center;">
@@ -59,6 +57,6 @@ export function showAddressPopup(
   });
 
   popup.on('remove', () => {
-    console.log("Popup closed")  // TODO: remover depois esse console.log. por enquanto fica aqui para debug
+    console.log('Popup closed'); // TODO: remover depois esse console.log. por enquanto fica aqui para debug
   });
 }
