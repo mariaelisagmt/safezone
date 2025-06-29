@@ -8,7 +8,14 @@
       "token": "token-1"
     }
   ],
-  "login": {
+  "userLogin": {
+      "id": 1,
+      "name": "Alice Souza",
+      "email": "alice.souza@example.com",
+      "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
+      "token": "token-1"
+    },
+    "userRegister": {
       "id": 1,
       "name": "Alice Souza",
       "email": "alice.souza@example.com",

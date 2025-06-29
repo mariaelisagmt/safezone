@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { UserService } from '../../services/user.service';
 export class LoginComponent {
   private form = inject(FormBuilder);
   private service = inject(UserService);
+  private router = inject(Router);
 
   loginForm: FormGroup;
 
@@ -27,12 +29,17 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Login', this.loginForm.value);
-      this.service
-        .login(this.loginForm.get('email')?.value, this.loginForm.get('password')?.value)
-        .subscribe((result) => {
-          console.log('resultado do login', result);
-        });
+      const email = this.loginForm.get('email')?.value;
+      const password = this.loginForm.get('password')?.value;
+
+      this.service.login(email, password).subscribe({
+        next: (user) => {
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          console.log('Error', 'Usuário ou senha inválidos');
+        },
+      });
     }
   }
 }

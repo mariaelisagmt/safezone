@@ -4,14 +4,16 @@ import { environment } from '../../environment/environment';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { IUser } from '../interfaces/user.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}/user`;
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  private router = inject(Router);
 
   currentUser$ = this.currentUserSubject.asObservable();
 
@@ -22,17 +24,19 @@ export class UserService {
     }
   }
 
+  // TODO - Melhorar após conexão com o banco de dados
   login(email: string, password: string): Observable<IUser> {
-    return this.http.post<IUser>(`${this.apiUrl}/login`, { email, password }).pipe(
+    return this.http.get<IUser>(`${this.apiUrl}Login`).pipe(
       tap((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
+        this.router.navigate(['/home']);
       })
     );
   }
 
   register(userData: Partial<IUser> & { password: string }): Observable<IUser> {
-    return this.http.post<IUser>(`${this.apiUrl}/register`, userData).pipe(
+    return this.http.post<IUser>(`${this.apiUrl}Register`, userData).pipe(
       tap((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
@@ -65,5 +69,4 @@ export class UserService {
   getToken(): string | null {
     return this.currentUserSubject.value?.token || null;
   }
-
 }

@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Footer } from '../footer/footer.components';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserService } from '../../services/user.service';
@@ -30,6 +30,7 @@ import { IUser } from '../../interfaces/user.interface';
 })
 export class MainComponent {
   private userService = inject(UserService);
+  private router = inject(Router);
 
   user: IUser | null = null;
   menuAberto = false;
@@ -42,6 +43,7 @@ export class MainComponent {
 
   logout() {
     this.userService.logout();
+    this.router.navigate(['/login']);
   }
 
   toggleMenu() {

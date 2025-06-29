@@ -1,8 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="over" class="app-sidenav">
-        <!-- Informações do Usuário -->
     <div class="user-info" *ngIf="user">
-      <img [src]="user.avatarUrl" alt="Avatar">
+      <mat-icon aria-hidden="false" aria-label="user" fontIcon="user"></mat-icon>
       <div class="user-details">
         <h3>{{ user.name }}</h3>
         <p>{{ user.email }}</p>
@@ -21,13 +20,13 @@
           <span>Pesquisar</span>
         </div>
       </a>
-      <a mat-list-item routerLink="/dashboard"  routerLinkActive="ativo" (click)="sidenav.close()">
+      <a mat-list-item routerLink="/dashboard" routerLinkActive="ativo" (click)="sidenav.close()">
         <div class="menu-icon">
           <mat-icon aria-hidden="false" aria-label="poll" fontIcon="poll"></mat-icon>
           <span>Dashboard</span>
         </div>
       </a>
-      <a mat-list-item routerLink="/list"  routerLinkActive="ativo" (click)="sidenav.close()">
+      <a mat-list-item routerLink="/list" routerLinkActive="ativo" (click)="sidenav.close()">
         <div class="menu-icon">
           <mat-icon aria-hidden="false" aria-label="list" fontIcon="list"></mat-icon>
           <span>Listar</span>
@@ -45,7 +44,7 @@
           <span>Configurações</span>
         </div>
       </a>
-      <a mat-list-item routerLink="/logout"  routerLinkActive="ativo" (click)="sidenav.close()">
+      <a mat-list-item aria-hidden="true" (click)="logout(); sidenav.close()">
         <div class="menu-icon">
           <mat-icon aria-hidden="false" aria-label="plus" fontIcon="logout"></mat-icon>
           <span>Logout</span>
