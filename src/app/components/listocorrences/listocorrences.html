@@ -1,0 +1,40 @@
+<div class="ocorrencias-container">
+  <h2>Lista de Ocorrências</h2>
+  <div class="table-wrapper">
+    <table class="ocorrencias-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Descrição</th>
+          <th>Tipo de Ocorrência</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Usuário</th>
+          <th>Data Criação</th>
+          <th>Longitude</th>
+          <th>Latitude</th>
+          <th>Endereço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pessoa of lista; let i = index">
+          <td>{{ pessoa.titulo }}</td>
+          <td>{{ pessoa.descricao }}</td>
+          <td>{{ pessoa.tipo_ocorrencia }}</td>
+          <td>{{ pessoa.data }}</td>
+          <td>{{ pessoa.hora }}</td>
+          <td>{{ pessoa.usuario }}</td>
+          <td>{{ pessoa.data_criacao }}</td>
+          <td>{{ pessoa.longitude }}</td>
+          <td>{{ pessoa.latitude }}</td>
+          <td>{{ pessoa.endereco }}</td>
+          <td>
+            <button class="btn editar" (click)="editarOcorrencia(i)">Editar</button>
+            <button class="btn excluir" (click)="excluirOcorrencia(i)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -4,21 +4,18 @@
   <form [formGroup]="searchForm" class="form-container">
     <div class="row">
       <div class="col">
-
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Pesquisar Endereço</mat-label>
           <input matInput formControlName="address" placeholder="Digite o endereço" />
         </mat-form-field>
       </div>
       <div class="col">
-
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Tipo</mat-label>
           <mat-select formControlName="type">
             <mat-option *ngFor="let option of typeOcorrenceOptions" [value]="option.value">
               {{ option.label }}
             </mat-option>
-            
           </mat-select>
         </mat-form-field>
       </div>
@@ -28,8 +25,8 @@
           Buscar
         </button>
       </div>
-      </div>
-    </form>
+    </div>
+  </form>
 
   <div class="map-section">
     <app-map-occurrence [addressToSearch]="addressForMap"></app-map-occurrence>

@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
 
@@ -17,7 +17,7 @@
   max-width: 90vw;
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   z-index: 10000;
   padding: 2rem 1.5rem;
   display: flex;
@@ -74,7 +74,7 @@
   transition: background 0.2s;
 }
 
-.modal button[type="button"] {
+.modal button[type='button'] {
   background: #aaa;
   margin-left: 0.5rem;
 }
@@ -83,7 +83,7 @@
   background: #125ea7;
 }
 
-.modal button[type="button"]:hover {
+.modal button[type='button']:hover {
   background: #888;
 }
 

@@ -10,12 +10,10 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-        <mat-label>Tipo de ocorrência</mat-label>
-        <mat-select [(ngModel)]="selectedType" name="type" required>
-          <mat-option *ngFor="let type of typeOptions" [value]="type[1]">
-            {{ type[0] }}
-          </mat-option>
-        </mat-select>
+      <mat-label>Tipo de ocorrência</mat-label>
+      <mat-select [(ngModel)]="selectedType" name="type" required>
+        <mat-option *ngFor="let type of typeOptions" [value]="type[1]"> {{ type[0] }} </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -23,8 +21,10 @@
       <textarea matInput [(ngModel)]="description" name="description" required></textarea>
     </mat-form-field>
 
-    <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;">
-      <button mat-raised-button color="primary" type="submit" id="add-occurrence-submit-button">Adicionar</button>
+    <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem">
+      <button mat-raised-button color="primary" type="submit" id="add-occurrence-submit-button">
+        Adicionar
+      </button>
       <button mat-raised-button color="warn" type="button" (click)="close()">Cancelar</button>
     </div>
   </form>
