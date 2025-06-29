@@ -26,8 +26,10 @@ export class AddOccurrenceModalComponent {
   @Input() latitude!: number;
   @Input() longitude!: number;
   @Input() title!: string;
+  @Input() address!: string;
   @Output() submitted = new EventEmitter<{
     title: string;
+    address: string;
     latitude: number;
     longitude: number;
     type: string;
@@ -44,6 +46,7 @@ export class AddOccurrenceModalComponent {
     event.preventDefault();
     this.submitted.emit({
       title: this.title,
+      address: this.address,
       latitude: this.latitude,
       longitude: this.longitude,
       type: this.selectedType,

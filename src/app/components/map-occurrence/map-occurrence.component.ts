@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, SimpleChanges, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Input, OnInit, SimpleChanges, inject } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
@@ -7,10 +7,15 @@ import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
 import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
+import { SearchAddressService } from '../../services/searchAddress.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
+import { CommonModule } from '@angular/common';
+import { showAddressPopup } from '../../utils/mapPopupUtil';
 
 @Component({
   selector: 'app-map-occurrence',
-  imports: [],
+  imports: [AddOccurrenceModalComponent, CommonModule],
   templateUrl: './map-occurrence.component.html',
   styleUrl: './map-occurrence.component.scss',
 })
@@ -21,6 +26,9 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
   private ocurrences: IOcurrence[] = [];
+  private searchAddressService = inject(SearchAddressService);
+  private cdr = inject(ChangeDetectorRef);
+  private snackBar = inject(MatSnackBar);
 
   private heatPoints = L.layerGroup();
   private ocurrencePoints = L.layerGroup();
@@ -31,12 +39,68 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     iconAnchor: [16, 32],
   });
 
+  // Configurações do modal e popup
+  showModal = false;
+  modalLat = 0;
+  modalLng = 0;
+  address = '';
+
+  openModal(lat: number, lng: number, address: string) {
+    this.modalLat = lat;
+    this.modalLng = lng;
+    this.address = address;
+
+    this.showModal = true;
+    this.cdr.detectChanges(); // Force Angular to update the view
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.modalLat = 0;
+    this.modalLng = 0;
+    this.address = '';
+    this.cdr.detectChanges();
+  }
+
+  onModalSubmit(data: { latitude: number; longitude: number; description: string }) {
+    // Handle the submitted data (e.g., save occurrence)
+    const submitBtn = document.getElementById('add-occurrence-submit-button') as HTMLButtonElement;
+    if (submitBtn) {
+      submitBtn.disabled = true; // Disable the button to prevent multiple submissions
+    }
+
+    console.log('Occurrence submitted:', data);  // TODO: remover depois: console.log de debug
+
+    this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar-success'],
+    });
+
+    submitBtn.disabled = false; // Re-enable the button after submission
+    this.closeModal();
+  }
+
   ngOnInit(): void {
     this.loadOccurrences();
   }
 
   ngAfterViewInit(): void {
     this.initMap();
+
+    // Comportamento do modal
+    // Popup com modal de formulário para add ocorrência
+    // TODO: Descomentar quando o comportamento do modal estiver acertado
+    // this.map.on('click', (e) => {
+    //   showAddressPopup(
+    //     this.map,
+    //     e.latlng.lat,
+    //     e.latlng.lng,
+    //     this.searchAddressService,
+    //     this.openModal.bind(this)
+    //   );
+    // });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
