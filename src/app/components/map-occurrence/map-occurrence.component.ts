@@ -20,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
 import { CommonModule } from '@angular/common';
 import { showAddressPopup } from '../../utils/mapPopupUtil';
+import { AddressForm } from '../../models/addressform.model';
 
 @Component({
   selector: 'app-map-occurrence',
@@ -54,12 +55,13 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   address = '';
 
   openModal(lat: number, lng: number, address: string) {
+    // Função para abrir modal com os dados da ocorrência. Ela é passada na chamada de showAddressPopup
+    // que é chamada no evento de click do mapa.
+    this.showModal = true;
     this.modalLat = lat;
     this.modalLng = lng;
     this.address = address;
-
-    this.showModal = true;
-    this.cdr.detectChanges(); // Force Angular to update the view
+    this.cdr.detectChanges(); // Forçar a detecção de mudanças para atualizar o modal
   }
 
   closeModal() {
@@ -67,17 +69,18 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     this.modalLat = 0;
     this.modalLng = 0;
     this.address = '';
-    this.cdr.detectChanges();
+    this.cdr.detectChanges(); // Forçar a detecção de mudanças para atualizar o modal
   }
 
-  onModalSubmit(data: { latitude: number; longitude: number; description: string }) {
+  onModalSubmit(data: AddressForm): void {
     // Handle the submitted data (e.g., save occurrence)
     const submitBtn = document.getElementById('add-occurrence-submit-button') as HTMLButtonElement;
     if (submitBtn) {
-      submitBtn.disabled = true; // Disable the button to prevent multiple submissions
+      submitBtn.disabled = true; // Desabilitar o submit enquanto processa o envio
     }
 
-    console.log('Occurrence submitted:', data); // TODO: remover depois: console.log de debug
+    // TODO: adicionar POST para API
+    console.log('Occurrence submitted:', data);
 
     this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
       duration: 2000,
@@ -86,7 +89,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
       panelClass: ['snackbar-success'],
     });
 
-    submitBtn.disabled = false; // Re-enable the button after submission
+    submitBtn.disabled = false; // Reativar o submit após envio
     this.closeModal();
   }
 
@@ -99,16 +102,15 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
     // Comportamento do modal
     // Popup com modal de formulário para add ocorrência
-    // TODO: Descomentar quando o comportamento do modal estiver acertado
-    // this.map.on('click', (e) => {
-    //   showAddressPopup(
-    //     this.map,
-    //     e.latlng.lat,
-    //     e.latlng.lng,
-    //     this.searchAddressService,
-    //     this.openModal.bind(this)
-    //   );
-    // });
+    this.map.on('click', (e) => {
+      showAddressPopup(
+        this.map,
+        e.latlng.lat,
+        e.latlng.lng,
+        this.searchAddressService,
+        this.openModal.bind(this)
+      );
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

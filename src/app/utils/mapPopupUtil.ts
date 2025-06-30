@@ -56,7 +56,7 @@ export function showAddressPopup(
     },
   });
 
-  popup.on('remove', () => {
-    console.log('Popup closed'); // TODO: remover depois esse console.log. por enquanto fica aqui para debug
-  });
+  // popup.on('remove', () => {
+  //   console.log('Popup closed');
+  // });
 }
