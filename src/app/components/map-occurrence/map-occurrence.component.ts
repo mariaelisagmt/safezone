@@ -1,16 +1,31 @@
-import { AfterViewInit, Component, Input, OnInit, SimpleChanges, inject } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
 
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
+import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
+import { SearchAddressService } from '../../services/searchAddress.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
+import { CommonModule } from '@angular/common';
+import { showAddressPopup } from '../../utils/mapPopupUtil';
+import { AddressForm } from '../../models/addressform.model';
 import { calculateNClusters } from '../../utils/calculatedCentroid';
 import { IOcurrenceGroup } from '../../interfaces/occurrenceGroup.interface';
 
 @Component({
   selector: 'app-map-occurrence',
-  imports: [],
+  imports: [AddOccurrenceModalComponent, CommonModule],
   templateUrl: './map-occurrence.component.html',
   styleUrl: './map-occurrence.component.scss',
 })
@@ -20,6 +35,10 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
+  private ocurrences: IOcurrence[] = [];
+  private searchAddressService = inject(SearchAddressService);
+  private cdr = inject(ChangeDetectorRef);
+  private snackBar = inject(MatSnackBar);
   private ocurrences: IOcurrenceGroup[] = [];
 
   private heatPoints = L.layerGroup();
@@ -31,12 +50,69 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     iconAnchor: [16, 32],
   });
 
+  // Configurações do modal e popup
+  showModal = false;
+  modalLat = 0;
+  modalLng = 0;
+  address = '';
+
+  openModal(lat: number, lng: number, address: string) {
+    // Função para abrir modal com os dados da ocorrência. Ela é passada na chamada de showAddressPopup
+    // que é chamada no evento de click do mapa.
+    this.showModal = true;
+    this.modalLat = lat;
+    this.modalLng = lng;
+    this.address = address;
+    this.cdr.detectChanges(); // Forçar a detecção de mudanças para atualizar o modal
+  }
+
+  closeModal() {
+    this.showModal = false;
+    this.modalLat = 0;
+    this.modalLng = 0;
+    this.address = '';
+    this.cdr.detectChanges(); // Forçar a detecção de mudanças para atualizar o modal
+  }
+
+  onModalSubmit(data: AddressForm): void {
+    // Handle the submitted data (e.g., save occurrence)
+    const submitBtn = document.getElementById('add-occurrence-submit-button') as HTMLButtonElement;
+    if (submitBtn) {
+      submitBtn.disabled = true; // Desabilitar o submit enquanto processa o envio
+    }
+
+    // TODO: adicionar POST para API
+    console.log('Occurrence submitted:', data);
+
+    this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
+      duration: 2000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar-success'],
+    });
+
+    submitBtn.disabled = false; // Reativar o submit após envio
+    this.closeModal();
+  }
+
   ngOnInit(): void {
     this.loadOccurrences();
   }
 
   ngAfterViewInit(): void {
     this.initMap();
+
+    // Comportamento do modal
+    // Popup com modal de formulário para add ocorrência
+    this.map.on('click', (e) => {
+      showAddressPopup(
+        this.map,
+        e.latlng.lat,
+        e.latlng.lng,
+        this.searchAddressService,
+        this.openModal.bind(this)
+      );
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

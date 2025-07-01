@@ -14,4 +14,8 @@ export class SearchAddressService {
   getAddress(query: string): Observable<any> {
     return this.http.get(`${this.mapUrl}/search?q=${query}&limit=5&format=json&addressdetails=1`);
   }
+
+  getAddressByLatLng(lat: number, lng: number): Observable<any> {
+    return this.http.get(`${this.mapUrl}/reverse?lat=${lat}&lon=${lng}&format=jsonv2`);
+  }
 }
