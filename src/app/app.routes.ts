@@ -13,17 +13,16 @@ import { MainComponent } from './components/main/main.components';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterUserComponent },
   {
     path: '',
     component: MainComponent,
     children: [
-      { path: 'home', component: Home, canActivate: [AuthGuard] },
-      { path: 'search', component: SearchMap, canActivate: [AuthGuard] },
-      { path: 'add', component: MapComponent, canActivate: [AuthGuard] },
-      { path: 'list', component: ListOcorrences, canActivate: [AuthGuard] },
-      { path: 'register', component: RegisterUserComponent, canActivate: [AuthGuard] },
-      { path: 'config', component: SettingsComponent, canActivate: [AuthGuard] },
-      { path: 'login', component: LoginComponent },
+      { path: 'home', component: Home },
+      { path: 'search', component: SearchMap },
+      { path: 'add', component: MapComponent },
+      { path: 'list', component: ListOcorrences },
+      { path: 'config', component: SettingsComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '**', redirectTo: '/home' },
     ],

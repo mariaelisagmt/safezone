@@ -11,34 +11,35 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   private http = inject(HttpClient);
+  private router = inject(Router);
   private apiUrl = `${environment.apiUrl}/User`;
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
-  private router = inject(Router);
 
   currentUser$ = this.currentUserSubject.asObservable();
 
   constructor() {
     const userJson = localStorage.getItem('currentUser');
     if (userJson) {
-      this.currentUserSubject.next(JSON.parse(userJson));
+      const user = JSON.parse(userJson);
+      this.currentUserSubject.next(user);
     }
   }
 
-  login(email: string, password: string): Observable<IUser> {
-    return this.http.get<IUser>(`${this.apiUrl}Login`).pipe(
-      tap((user) => {
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
+  login(email: string, password: string): Observable<{ token: string }> {
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
+      tap((response) => {
+        localStorage.setItem('token', response.token);
         this.router.navigate(['/home']);
       })
     );
   }
 
-  register(userData: Partial<IUser> & { password: string }): Observable<IUser> {
+  register(userData: Partial<IUser>): Observable<IUser> {
     return this.http.post<IUser>(`${this.apiUrl}`, userData).pipe(
       tap((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
+        this.router.navigate(['/home']);
       })
     );
   }

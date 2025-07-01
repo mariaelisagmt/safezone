@@ -13,21 +13,23 @@
         <h2>Login</h2>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Email</mat-label>
-          <input matInput type="email" required />
+          <input matInput type="email" formControlName="email" required />
           <mat-icon matSuffix aria-hidden="false" aria-label="person" fontIcon="person"></mat-icon>
         </mat-form-field>
-        
+
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Senha</mat-label>
-          <input matInput type="password" required />
+          <input matInput type="password" formControlName="password" required />
           <mat-icon matSuffix aria-hidden="false" aria-label="vpn_key" fontIcon="vpn_key"></mat-icon>
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit" class="login-btn"
           [disabled]="loginForm.invalid">Entrar</button>
-        <button mat-raised-button color="secondary" class="login-btn" routerLink="/register">Cadastrar</button>
-      </div>
-    </form>
+        </div>
+      </form>
+      <button mat-raised-button color="accent" (click)="cadastrar()">
+        Criar conta
+      </button>
 
     <app-footer></app-footer>
   </div>
