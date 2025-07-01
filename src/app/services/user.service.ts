@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/user`;
+  private apiUrl = `${environment.apiUrl}/User`;
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
   private router = inject(Router);
 
@@ -24,7 +24,6 @@ export class UserService {
     }
   }
 
-  // TODO - Melhorar após conexão com o banco de dados
   login(email: string, password: string): Observable<IUser> {
     return this.http.get<IUser>(`${this.apiUrl}Login`).pipe(
       tap((user) => {
@@ -36,7 +35,7 @@ export class UserService {
   }
 
   register(userData: Partial<IUser> & { password: string }): Observable<IUser> {
-    return this.http.post<IUser>(`${this.apiUrl}Register`, userData).pipe(
+    return this.http.post<IUser>(`${this.apiUrl}`, userData).pipe(
       tap((user) => {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);

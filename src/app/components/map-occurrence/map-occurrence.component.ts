@@ -13,7 +13,6 @@ import 'leaflet-control-geocoder';
 
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
-import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
 import { SearchAddressService } from '../../services/searchAddress.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
@@ -22,6 +21,7 @@ import { showAddressPopup } from '../../utils/mapPopupUtil';
 import { AddressForm } from '../../models/addressform.model';
 import { calculateNClusters } from '../../utils/calculatedCentroid';
 import { IOcurrenceGroup } from '../../interfaces/occurrenceGroup.interface';
+import { IOcurrence } from '../../interfaces/occurrence.interface';
 
 @Component({
   selector: 'app-map-occurrence',
@@ -35,7 +35,6 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
-  private ocurrences: IOcurrence[] = [];
   private searchAddressService = inject(SearchAddressService);
   private cdr = inject(ChangeDetectorRef);
   private snackBar = inject(MatSnackBar);

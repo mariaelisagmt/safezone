@@ -10,6 +10,7 @@ import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurren
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SearchAddressService } from '../../services/searchAddress.service';
+import { IOcurrence } from '../../interfaces/occurrence.interface';
 
 @Component({
   selector: 'app-map',
