@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
-import 'leaflet-control-geocoder';
+// import 'leaflet-control-geocoder';
 
 import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { OcurrenceService } from '../../services/occurrences.service';
@@ -24,6 +24,7 @@ import { AddressForm } from '../../models/addressform.model';
 
 @Component({
   selector: 'app-map-occurrence',
+  standalone: true,
   imports: [AddOccurrenceModalComponent, CommonModule],
   templateUrl: './map-occurrence.component.html',
   styleUrl: './map-occurrence.component.scss',
@@ -91,6 +92,9 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
     submitBtn.disabled = false; // Reativar o submit após envio
     this.closeModal();
+
+    // automaticamente recarrega a página após 3 segundos
+    setTimeout(() => window.location.reload(), 3000);
   }
 
   ngOnInit(): void {
