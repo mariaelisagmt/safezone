@@ -8,8 +8,8 @@
       <img src="../../../assets/imgs/logo.png" alt="Logo da SafeZone" class="logo-img" />
     </div>
 
+    <div class=" login-card">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class=" login-card">
         <h2>Login</h2>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Email</mat-label>
@@ -25,11 +25,11 @@
 
         <button mat-raised-button color="primary" type="submit" class="login-btn"
           [disabled]="loginForm.invalid">Entrar</button>
-        </div>
-      </form>
-      <button mat-raised-button color="accent" (click)="cadastrar()">
-        Criar conta
-      </button>
+        </form>
+        <button mat-raised-button color="accent" (click)="cadastrar()">
+          Criar conta
+        </button>
+      </div>
 
     <app-footer></app-footer>
   </div>
