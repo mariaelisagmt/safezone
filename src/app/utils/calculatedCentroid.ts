@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { IClusterResult } from '../interfaces/cluster-result.interface';
 
 /**
