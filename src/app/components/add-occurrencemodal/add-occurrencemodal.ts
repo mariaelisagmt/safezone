@@ -7,6 +7,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 
 import { AddOccurrenceTypeObject } from '../../enums/add-occurrence-type.object';
+import { AddressForm } from '../../models/addressform.model';
 
 @Component({
   selector: 'app-add-occurrence-modal',
@@ -26,17 +27,12 @@ export class AddOccurrenceModalComponent {
   @Input() latitude!: number;
   @Input() longitude!: number;
   @Input() title!: string;
-  @Output() submitted = new EventEmitter<{
-    title: string;
-    latitude: number;
-    longitude: number;
-    type: string;
-    description: string;
-  }>();
+  @Input() address!: string;
+  @Output() submitted = new EventEmitter<AddressForm>();
   @Output() closed = new EventEmitter<void>();
 
   description = '';
-  selectedType = '';
+  selectedType = 0;
 
   typeOptions = Object.entries(AddOccurrenceTypeObject);
 
@@ -44,11 +40,12 @@ export class AddOccurrenceModalComponent {
     event.preventDefault();
     this.submitted.emit({
       title: this.title,
+      address: this.address,
       latitude: this.latitude,
       longitude: this.longitude,
       type: this.selectedType,
       description: this.description,
-    });
+    } as AddressForm);
     this.close();
   }
 
