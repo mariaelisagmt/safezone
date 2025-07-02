@@ -4,7 +4,7 @@
   padding: 1rem;
   background: var(--background, #fff);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   h2 {
     margin-bottom: 1rem;
@@ -28,7 +28,9 @@ body.dark-mode {
   background: #333;
   color: #f0f0f0;
 
-  mat-form-field, input, .mat-slide-toggle-content {
+  mat-form-field,
+  input,
+  .mat-slide-toggle-content {
     color: #f0f0f0 !important;
   }
 }

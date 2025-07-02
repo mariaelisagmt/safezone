@@ -1,4 +1,4 @@
-import { ICoord } from "./coord.interface";
+import { ICoord } from './coord.interface';
 
 export interface IClusterResult {
   id: number;

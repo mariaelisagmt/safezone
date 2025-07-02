@@ -1,5 +1,5 @@
 {
-  "user":[
+  "user": [
     {
       "id": 1,
       "name": "Alice Souza",
@@ -9,20 +9,20 @@
     }
   ],
   "userLogin": {
-      "id": 1,
-      "name": "Alice Souza",
-      "email": "alice.souza@example.com",
-      "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
-      "token": "token-1"
-    },
-    "userRegister": {
-      "id": 1,
-      "name": "Alice Souza",
-      "email": "alice.souza@example.com",
-      "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
-      "token": "token-1"
-    },
-  "ocurrencesUser":[
+    "id": 1,
+    "name": "Alice Souza",
+    "email": "alice.souza@example.com",
+    "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
+    "token": "token-1"
+  },
+  "userRegister": {
+    "id": 1,
+    "name": "Alice Souza",
+    "email": "alice.souza@example.com",
+    "address": "Rua das Palmeiras, 100 - Aldeota, Fortaleza/CE",
+    "token": "token-1"
+  },
+  "ocurrencesUser": [
     {
       "id": "1",
       "title": "Ocorrência 1",
@@ -955,7 +955,7 @@
       "icon": "🔧",
       "color": "green"
     },
-     {
+    {
       "id": "1",
       "height": -3.74813,
       "width": -38.515315,

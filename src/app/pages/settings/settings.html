@@ -4,20 +4,25 @@
   <form [formGroup]="settingsForm">
     <mat-form-field appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput placeholder="Seu nome" formControlName="name">
+      <input matInput placeholder="Seu nome" formControlName="name" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Seu email" formControlName="email">
+      <input matInput placeholder="Seu email" formControlName="email" />
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Endereço Padrão</mat-label>
-      <input matInput placeholder="Endereço" formControlName="defaultAddress">
+      <input matInput placeholder="Endereço" formControlName="defaultAddress" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="saveSettings()" [disabled]="!settingsForm.valid">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="saveSettings()"
+      [disabled]="!settingsForm.valid"
+    >
       Salvar Configurações
     </button>
   </form>

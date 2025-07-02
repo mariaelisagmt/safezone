@@ -5,7 +5,7 @@ import { IClusterResult } from '../interfaces/cluster-result.interface';
 /**
  * Agrupa pontos em K clusters usando k-means aproximado.
  * Retorna cada cluster com centroide + raio.
-*/
+ */
 export function calculateNClusters(points: ICoord[], k: number): IClusterResult[] {
   if (points.length === 0 || k <= 0) return [];
 
@@ -58,8 +58,8 @@ export function calculateNClusters(points: ICoord[], k: number): IClusterResult[
     const members = clusters[i];
     if (members.length === 0) continue;
     const center = centroids[i];
-    const dists = members.map(p => distance(p, center));
-    const avgDist = dists.reduce((a,b) => a + b, 0) / dists.length;
+    const dists = members.map((p) => distance(p, center));
+    const avgDist = dists.reduce((a, b) => a + b, 0) / dists.length;
     const radius = avgDist * 111_000 * 2 + members.length * 5;
     const classify = 0;
     const id = i + 1;
