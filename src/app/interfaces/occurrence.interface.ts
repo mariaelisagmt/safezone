@@ -2,11 +2,9 @@ export interface IOcurrence {
   id: string;
   title: string;
   description: string;
-  type: number;
-  date: string;
-  hour: string;
-  userId: string;
-  criatedAt: Date;
+  type: string;
+  userId: number;
+  date: Date;
   adress: string;
   latitude: number;
   longitude: number;

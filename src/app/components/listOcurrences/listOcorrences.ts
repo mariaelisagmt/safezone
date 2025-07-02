@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { OcurrenceService } from '../../services/occurrences.service';
 import { IOcurrence } from '../../interfaces/occurrence.interface';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-listocorrences',
@@ -12,10 +14,20 @@ import { IOcurrence } from '../../interfaces/occurrence.interface';
 })
 export class ListOcorrences implements OnInit {
   private ocurrenceService = inject(OcurrenceService);
+  private userService = inject(UserService);
   ocurrences: IOcurrence[] = [];
+  user: IUser = {
+    id: 0,
+    email: '',
+    password: '',
+  };
 
   ngOnInit(): void {
-    this.ocurrenceService.getOcurrencesByUser('user').subscribe((result) => {
+    this.userService.currentUser$.subscribe((data) => {
+      if (data) this.user = data;
+    });
+    this.ocurrenceService.getOcurrencesByUser(4).subscribe((result) => {
+      console.log(result);
       this.ocurrences = result;
     });
   }

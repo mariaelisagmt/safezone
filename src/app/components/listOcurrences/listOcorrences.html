@@ -8,11 +8,9 @@
           <th>Descrição</th>
           <th>Tipo de Ocorrência</th>
           <th>Data</th>
-          <th>Hora</th>
           <th>Endereço</th>
           <th>Longitude</th>
           <th>Latitude</th>
-          <th>Data Criação</th>
           <th>Ações</th>
         </tr>
       </thead>
@@ -22,11 +20,9 @@
           <td>{{ ocurrence.description }}</td>
           <td>{{ ocurrence.type }}</td>
           <td>{{ ocurrence.date }}</td>
-          <td>{{ ocurrence.hour }}</td>
           <td>{{ ocurrence.adress }}</td>
           <td>{{ ocurrence.longitude }}</td>
           <td>{{ ocurrence.latitude }}</td>
-          <td>{{ ocurrence.criatedAt }}</td>
           <td>
             <button class="btn editar" (click)="editarOcorrencia(i)">
               <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit"></mat-icon>
