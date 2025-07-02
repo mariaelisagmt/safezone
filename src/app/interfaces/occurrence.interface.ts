@@ -5,7 +5,7 @@ export interface IOcurrence {
   type: string;
   userId: number;
   date: Date;
-  adress: string;
+  address: string;
   latitude: number;
   longitude: number;
 }

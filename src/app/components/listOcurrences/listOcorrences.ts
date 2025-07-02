@@ -26,7 +26,8 @@ export class ListOcorrences implements OnInit {
     this.userService.currentUser$.subscribe((data) => {
       if (data) this.user = data;
     });
-    this.ocurrenceService.getOcurrencesByUser(4).subscribe((result) => {
+    const userId = Number(localStorage.getItem('userId'));
+    this.ocurrenceService.getOcurrencesByUser(userId).subscribe((result) => {
       console.log(result);
       this.ocurrences = result;
     });

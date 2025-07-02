@@ -81,14 +81,29 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
       submitBtn.disabled = true; // Desabilitar o submit enquanto processa o envio
     }
 
-    // TODO: adicionar POST para API
-    console.log('Occurrence submitted:', data);
+    this.ocurrenceService.create(data).subscribe({
+      next: (response) => {
+        console.log('Ocorrência adicionada com sucesso:', response);
+        this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          panelClass: ['snackbar-success'],
+        });
+      },
+      error: (error) => {
+        console.error('Erro ao adicionar ocorrência:', error);
+        this.snackBar.open('Erro ao adicionar ocorrência. Tente novamente.', 'Fechar', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center',
+          panelClass: ['snackbar-error'],
+        });
 
-    this.snackBar.open('Ocorrência adicionada com sucesso!', 'Fechar', {
-      duration: 2000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      panelClass: ['snackbar-success'],
+        if (submitBtn) {
+          submitBtn.disabled = false; // Reativar o submit em caso de erro
+        }
+      },
     });
 
     submitBtn.disabled = false; // Reativar o submit após envio

@@ -29,6 +29,8 @@ export class UserService {
     return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
       tap((response) => {
         localStorage.setItem('token', response.token);
+        const userId = JSON.parse(atob(response.token.split('.')[1])).userId; // decodificando o JWT e pegando o userId
+        localStorage.setItem('userId', userId);
         this.router.navigate(['/home']);
       })
     );
