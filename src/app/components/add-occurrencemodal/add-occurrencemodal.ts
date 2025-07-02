@@ -33,6 +33,7 @@ export class AddOccurrenceModalComponent {
 
   description = '';
   selectedType = 0;
+  userId = Number(localStorage.getItem('userId')) || 0;
 
   typeOptions = Object.entries(AddOccurrenceTypeObject);
 
@@ -45,6 +46,7 @@ export class AddOccurrenceModalComponent {
       longitude: this.longitude,
       type: this.selectedType,
       description: this.description,
+      userId: this.userId,
     } as AddressForm);
     this.close();
   }

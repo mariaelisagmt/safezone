@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { IOcurrence } from '../interfaces/occurrence.interface';
 import { environment } from '../../environment/environment';
+import { IOcurrence } from '../interfaces/occurrence.interface';
 import { IOcurrenceGroup } from '../interfaces/occurrenceGroup.interface';
+import { AddressForm } from '../models/addressform.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +21,8 @@ export class OcurrenceService {
     return this.http.get<IOcurrence>(`${this.apiUrl}/${id}`);
   }
 
-  create(data: IOcurrence): Observable<IOcurrence> {
-    return this.http.post<IOcurrence>(this.apiUrl, data);
+  create(data: AddressForm): Observable<AddressForm> {
+    return this.http.post<AddressForm>(this.apiUrl, data);
   }
 
   update(id: string, data: Partial<IOcurrence>): Observable<IOcurrence> {

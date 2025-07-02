@@ -19,8 +19,8 @@
           <td>{{ ocurrence.title }}</td>
           <td>{{ ocurrence.description }}</td>
           <td>{{ ocurrence.type }}</td>
-          <td>{{ ocurrence.date }}</td>
-          <td>{{ ocurrence.adress }}</td>
+          <td>{{ ocurrence.date + 'Z' | date:'dd/MM/yyyy HH:mm':'America/Sao_Paulo' }}</td>
+          <td>{{ ocurrence.address }}</td>
           <td>{{ ocurrence.longitude }}</td>
           <td>{{ ocurrence.latitude }}</td>
           <td>

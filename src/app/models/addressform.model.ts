@@ -5,6 +5,7 @@ export class AddressForm {
   longitude: number;
   type: number;
   description: string;
+  userId: number;
 
   constructor(data: AddressForm) {
     this.title = data.title;
@@ -13,5 +14,6 @@ export class AddressForm {
     this.longitude = data.longitude;
     this.type = data.type;
     this.description = data.description;
+    this.userId = data.userId;
   }
 }
