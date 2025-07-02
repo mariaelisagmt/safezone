@@ -1,15 +1,11 @@
 import { ICoord } from '../interfaces/coord.interface';
-
-export function calculateCentroidRadius(point: ICoord[]): { center: ICoord; radius: number } {
-  if (point.length === 0) {
-    return { center: { lat: 0, lng: 0 }, radius: 0 };
 /* eslint-disable prettier/prettier */
 import { IClusterResult } from '../interfaces/cluster-result.interface';
 
 /**
  * Agrupa pontos em K clusters usando k-means aproximado.
  * Retorna cada cluster com centroide + raio.
- */
+*/
 export function calculateNClusters(points: ICoord[], k: number): IClusterResult[] {
   if (points.length === 0 || k <= 0) return [];
 
