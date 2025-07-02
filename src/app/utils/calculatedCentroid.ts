@@ -1,3 +1,5 @@
+import { ICoord } from '../interfaces/coord.interface';
+
 export function calculateCentroidRadius(point: ICoord[]): { center: ICoord; radius: number } {
   if (point.length === 0) {
     return { center: { lat: 0, lng: 0 }, radius: 0 };
