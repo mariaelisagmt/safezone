@@ -11,16 +11,17 @@ import * as L from 'leaflet';
 import 'leaflet.heat';
 // import 'leaflet-control-geocoder';
 
-import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { OcurrenceService } from '../../services/occurrences.service';
 import { catchError, map, of } from 'rxjs';
-import { calculateCentroidRadius } from '../../utils/calculatedCentroid';
 import { SearchAddressService } from '../../services/searchAddress.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
 import { CommonModule } from '@angular/common';
 import { showAddressPopup } from '../../utils/mapPopupUtil';
 import { AddressForm } from '../../models/addressform.model';
+import { calculateNClusters } from '../../utils/calculatedCentroid';
+import { IOcurrenceGroup } from '../../interfaces/occurrenceGroup.interface';
+import { IOcurrence } from '../../interfaces/occurrence.interface';
 
 @Component({
   selector: 'app-map-occurrence',
@@ -35,10 +36,10 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
   private ocurrenceService = inject(OcurrenceService);
   private map!: L.Map;
-  private ocurrences: IOcurrence[] = [];
   private searchAddressService = inject(SearchAddressService);
   private cdr = inject(ChangeDetectorRef);
   private snackBar = inject(MatSnackBar);
+  private ocurrences: IOcurrenceGroup[] = [];
 
   private heatPoints = L.layerGroup();
   private ocurrencePoints = L.layerGroup();
@@ -156,7 +157,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     this.ocurrences.forEach((ponto) => {
       const html = this.criarMarcadorHTML(ponto.icon, ponto.amount);
 
-      const marker = L.marker([ponto.height, ponto.width], {
+      const marker = L.marker([ponto.latitude, ponto.longitude], {
         icon: L.divIcon({
           className: '',
           html: html,
@@ -172,28 +173,36 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   private plotHeatMap() {
     const points = this.ocurrences.map((o) => {
       return {
-        lat: o.height,
-        lng: o.width,
+        lat: o.latitude,
+        lng: o.longitude,
       };
     });
-    const result = calculateCentroidRadius(points);
-    const heat = L.circle([result.center.lat, result.center.lng], {
-      radius: result.radius, // metros (ajuste conforme escala desejada)
-      color: 'transparent', // sem contorno
-      fillColor: this.getCor(result.radius),
-      fillOpacity: 0.4, // transparência
-    });
+    const result = calculateNClusters(points, 3);
+    console.log('Dados clusterizados:', result);
+    result.forEach((cluster) => {
+      const heat = L.circle([cluster.center.lat, cluster.center.lng], {
+        radius: cluster.radius, // metros (ajuste conforme escala desejada)
+        color: 'transparent', // sem contorno
+        fillColor: this.getCor(cluster.classify),
+        fillOpacity: 0.4, // transparência
+      });
 
-    this.heatPoints.addLayer(heat);
+      this.heatPoints.addLayer(heat);
+    });
 
     this.map.on('zoomend', () => {
       const currentZoom = this.map.getZoom();
-      if (currentZoom >= 10 && currentZoom <= 16) {
+      const minimum = 5;
+      const maximum = 16;
+
+      if (currentZoom >= minimum && currentZoom <= maximum) {
         if (!this.map.hasLayer(this.heatPoints)) this.heatPoints.addTo(this.map);
         if (this.map.hasLayer(this.ocurrencePoints)) this.map.removeLayer(this.ocurrencePoints);
       } else {
         if (this.map.hasLayer(this.heatPoints)) this.map.removeLayer(this.heatPoints);
-        if (!this.map.hasLayer(this.ocurrencePoints)) this.ocurrencePoints.addTo(this.map);
+        // if(//currentZoom > maximum &&
+        //   !this.map.hasLayer(this.ocurrencePoints))
+        this.ocurrencePoints.addTo(this.map);
       }
     });
 
@@ -212,9 +221,15 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   }
 
   private getCor(valor: number): string {
-    if (valor >= 80) return 'red';
-    if (valor >= 60) return 'orange';
-    if (valor >= 40) return 'yellow';
-    return 'green';
+    switch (valor) {
+      case 1:
+        return 'red';
+      case 2:
+        return 'orange';
+      case 3:
+        return 'green';
+      default:
+        return 'yellow';
+    }
   }
 }

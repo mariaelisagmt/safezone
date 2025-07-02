@@ -1,18 +1,19 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IOcurrence } from '../interfaces/occurrence.interface';
 import { environment } from '../../environment/environment';
+import { IOcurrenceGroup } from '../interfaces/occurrenceGroup.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OcurrenceService {
   private http = inject(HttpClient);
-  private apiUrl = `${environment.apiUrl}/ocurrences`;
+  private apiUrl = `${environment.apiUrl}/Occurence`;
 
-  getAll(): Observable<IOcurrence[]> {
-    return this.http.get<IOcurrence[]>(this.apiUrl);
+  getAll(): Observable<IOcurrenceGroup[]> {
+    return this.http.get<IOcurrenceGroup[]>(this.apiUrl);
   }
 
   getById(id: string): Observable<IOcurrence> {
@@ -29,5 +30,11 @@ export class OcurrenceService {
 
   delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getOcurrencesByUser(userId: number): Observable<IOcurrence[]> {
+    return this.http
+      .get<IOcurrence[]>(`${this.apiUrl}`)
+      .pipe(map((dados) => dados.filter((o) => o.userId == userId)));
   }
 }

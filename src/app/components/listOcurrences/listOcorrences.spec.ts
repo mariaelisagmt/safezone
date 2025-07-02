@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Listocorrences } from './listocorrences';
+import { ListOcorrences } from './listOcorrences';
 
 describe('Listocorrences', () => {
-  let component: Listocorrences;
-  let fixture: ComponentFixture<Listocorrences>;
+  let component: ListOcorrences;
+  let fixture: ComponentFixture<ListOcorrences>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Listocorrences],
+      imports: [ListOcorrences],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Listocorrences);
+    fixture = TestBed.createComponent(ListOcorrences);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
