@@ -134,3 +134,7 @@ docker push mariaelisagmt/safezone:latest
 
 # Verifica pastas geradas no angular
 ng build --configuration production
+
+# Como realizar o deploy
+Criação de Container Registry na azure
+Configuração das secretys no github

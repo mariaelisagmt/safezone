@@ -24,8 +24,8 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      # - name: Verificar ESLint
-      #   run: npm run lint
+      - name: Verificar ESLint
+        run: npm run lint
 
       - name: Verificar formatação com Prettier
         run: npm run format:check
@@ -33,5 +33,5 @@ jobs:
       #- name: Rodar testes unitários
       #run: npm run test -- --watch=false --browsers=ChromeHeadless
 
-      #- name: Verificar build
-      # run: npm run build -- --configuration production
+      - name: Verificar build
+        run: npm run build -- --configuration production
