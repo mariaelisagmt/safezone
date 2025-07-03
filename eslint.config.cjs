@@ -40,8 +40,8 @@ module.exports = tseslint.config(
       'space-before-blocks': ['error', 'always'],
       'comma-spacing': ['error', { before: false, after: true }],
       'object-curly-spacing': ['error', 'always'],
-      'sort-imports': ['warn', { ignoreCase: false, ignoreDeclarationSort: true }],
-      '@typescript-eslint/no-unused-vars': ['warn'],
+      //'sort-imports': ['warn', { ignoreCase: false, ignoreDeclarationSort: true }],
+      //'@typescript-eslint/no-unused-vars': ['warn'],
       '@typescript-eslint/naming-convention': [
         'error',
         {

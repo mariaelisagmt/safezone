@@ -49,11 +49,11 @@ export class LoginComponent {
       const password = this.loginForm.get('password')?.value;
 
       this.service.login(email, password).subscribe({
-        next: (user) => {
+        next: () => {
           this.router.navigate(['/home']);
         },
         error: (err) => {
-          console.log('Error', 'Usuário ou senha inválidos');
+          console.log('Error', 'Usuário ou senha inválidos', err);
         },
       });
     }

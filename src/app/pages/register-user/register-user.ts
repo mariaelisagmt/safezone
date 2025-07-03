@@ -44,7 +44,7 @@ export class RegisterUserComponent {
           this.router.navigate(['/home']);
         },
         error: (err) => {
-          console.log('Error', 'Usuário ou senha inválidos');
+          console.log('Error', 'Usuário ou senha inválidos', err);
         },
       });
     }
