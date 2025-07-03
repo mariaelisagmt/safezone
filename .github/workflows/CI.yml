@@ -25,7 +25,7 @@ jobs:
         run: npm ci
 
       - name: Verificar ESLint
-        run: npm run lint
+        run: ng lint --quiet
 
       - name: Verificar formatação com Prettier
         run: npm run format:check
