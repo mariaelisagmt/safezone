@@ -131,3 +131,6 @@ docker run -p 8080:80 safezone:latest
 - Subindo imagem para o docker:
 docker build -t mariaelisagmt/safezone .
 docker push mariaelisagmt/safezone:latest
+
+# Verifica pastas geradas no angular
+ng build --configuration production

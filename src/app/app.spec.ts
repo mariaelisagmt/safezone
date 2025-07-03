@@ -23,7 +23,7 @@ describe('App Component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have title "safezone-frontend"', () => {
-    expect(component['title']).toBe('safezone-frontend');
+  it('should have title "safezone"', () => {
+    expect(component['title']).toBe('safezone');
   });
 });

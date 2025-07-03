@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "safezone-frontend": {
+    "safezone": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "safezone-frontend:build:production"
+              "buildTarget": "safezone:build:production"
             },
             "development": {
-              "buildTarget": "safezone-frontend:build:development"
+              "buildTarget": "safezone:build:development"
             }
           },
           "defaultConfiguration": "development"
