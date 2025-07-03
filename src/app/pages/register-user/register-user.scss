@@ -42,13 +42,20 @@
 
 .top-bar {
   width: 100%;
-  background-color: #003366;
-  color: white;
+  background-color: white;
+  color: #003366;
   padding: 16px 24px;
   font-size: 20px;
   font-weight: 500;
   display: flex;
   align-items: center;
+  border-bottom: 2px solid rgb(0, 194, 254);
+}
+
+.brand-logo {
+  height: 40px; /* Set height to 40px as requested */
+  margin-top: 0.5rem;
+  margin-right: 10px;
 }
 
 .login-content {
