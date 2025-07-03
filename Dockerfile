@@ -1,17 +1,12 @@
-FROM node:18 AS build
-
+FROM node:21 as builder
 WORKDIR /app
-
-COPY package*.json ./
-RUN npm ci
-
 COPY . .
-RUN npm run build -- --configuration production
+RUN npm install
+RUN npm run build
 
 FROM nginx:alpine
-
-COPY --from=build /app/dist/<nome-do-seu-projeto> /usr/share/nginx/html
-
-EXPOSE 80
-
+COPY --from=builder /app/dist/sintetiza-frontend/browser /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY mime.types /etc/nginx/mime.types
+EXPOSE 00
 CMD ["nginx", "-g", "daemon off;"]
