@@ -12,9 +12,17 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let userServiceMock: any;
-  let routerMock: any;
+  let userServiceMock: MockUserService;
+  let routerMock: MockRouter;
   let formBuilder: FormBuilder;
+
+  interface MockUserService {
+    login: jest.Mock;
+  }
+
+  interface MockRouter {
+    navigate: jest.Mock;
+  }
 
   beforeEach(async () => {
     userServiceMock = {

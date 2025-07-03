@@ -15,6 +15,7 @@ import { TypeOcorrenceEnum } from '../../enums/type-ocurrence.enum';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { MatOptionModule } from '@angular/material/core'; // Import MatOptionModule
+import { ICoord } from '../../interfaces/coord.interface'; // Import ICoord
 
 // Mock MapOccurrenceComponent
 @Component({
@@ -23,14 +24,18 @@ import { MatOptionModule } from '@angular/material/core'; // Import MatOptionMod
   standalone: true, // Mark as standalone
 })
 class MockMapOccurrenceComponent {
-  @Input() addressToSearch: any;
+  @Input() addressToSearch: ICoord | undefined;
 }
 
 describe('SearchMap', () => {
   let component: SearchMap;
   let fixture: ComponentFixture<SearchMap>;
-  let searchAddressServiceMock: any;
+  let searchAddressServiceMock: MockSearchAddressService;
   let formBuilder: FormBuilder;
+
+  interface MockSearchAddressService {
+    getAddress: jest.Mock;
+  }
 
   beforeEach(async () => {
     searchAddressServiceMock = {

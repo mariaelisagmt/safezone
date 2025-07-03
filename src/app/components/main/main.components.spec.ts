@@ -3,14 +3,14 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MainComponent } from './main.components';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IUser } from '../../interfaces/user.interface';
 
 describe('MainComponent', () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
-  let userServiceMock: any;
-  let routerMock: any;
+  let userServiceMock: MockUserService;
+  let routerMock: MockRouter;
 
   const mockUser: IUser = {
     id: 1,
@@ -19,6 +19,23 @@ describe('MainComponent', () => {
     password: 'testpassword',
     token: 'some-token',
   };
+
+  interface MockUserService {
+    currentUser$: Observable<IUser | null>;
+    logout: jest.Mock;
+  }
+
+  interface MockRouter {
+    navigate: jest.Mock;
+    routerState: {
+      snapshot: {
+        root: object;
+      };
+    };
+    events: Observable<unknown>;
+    createUrlTree: jest.Mock;
+    serializeUrl: jest.Mock;
+  }
 
   beforeEach(async () => {
     userServiceMock = {

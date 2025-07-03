@@ -80,7 +80,7 @@ describe('ListOcorrences', () => {
   });
 
   it('should call alert when editarOcorrencia is called', () => {
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
+    jest.spyOn(window, 'alert');
     component.ocurrences = mockOcurrences;
     component.editarOcorrencia(0);
     expect(window.alert).toHaveBeenCalledWith(`Editar ocorrência: ${mockOcurrences[0].title}`);

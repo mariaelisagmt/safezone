@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 describe('Footer', () => {
   let component: Footer;
   let fixture: ComponentFixture<Footer>;
-  let matDialogMock: any;
+  let matDialogMock: Partial<MatDialog>;
 
   beforeEach(async () => {
     matDialogMock = {

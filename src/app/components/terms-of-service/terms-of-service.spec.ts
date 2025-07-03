@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 describe('TermsOfService', () => {
   let component: TermsOfService;
   let fixture: ComponentFixture<TermsOfService>;
-  let matDialogRefMock: any;
+  let matDialogRefMock: Partial<MatDialogRef<TermsOfService>>;
 
   beforeEach(async () => {
     matDialogRefMock = {

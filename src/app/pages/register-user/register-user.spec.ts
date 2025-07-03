@@ -13,9 +13,17 @@ import { IUser } from '../../interfaces/user.interface';
 describe('RegisterUserComponent', () => {
   let component: RegisterUserComponent;
   let fixture: ComponentFixture<RegisterUserComponent>;
-  let userServiceMock: any;
-  let routerMock: any;
+  let userServiceMock: MockUserService;
+  let routerMock: MockRouter;
   let formBuilder: FormBuilder;
+
+  interface MockUserService {
+    register: jest.Mock;
+  }
+
+  interface MockRouter {
+    navigate: jest.Mock;
+  }
 
   beforeEach(async () => {
     userServiceMock = {

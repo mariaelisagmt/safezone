@@ -5,4 +5,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    '^leaflet-control-geocoder$': '<rootDir>/__mocks__/leaflet-control-geocoder.js',
+  },
 };
