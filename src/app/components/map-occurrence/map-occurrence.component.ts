@@ -9,10 +9,9 @@ import {
 } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
-// import 'leaflet-control-geocoder';
+import 'leaflet-control-geocoder';
 
 import { OcurrenceService } from '../../services/occurrences.service';
-import { catchError, map, of } from 'rxjs';
 import { SearchAddressService } from '../../services/searchAddress.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurrencemodal';
@@ -20,8 +19,8 @@ import { CommonModule } from '@angular/common';
 import { showAddressPopup } from '../../utils/mapPopupUtil';
 import { AddressForm } from '../../models/addressform.model';
 import { calculateNClusters } from '../../utils/calculatedCentroid';
-import { IOcurrenceGroup } from '../../interfaces/occurrenceGroup.interface';
 import { IOcurrence } from '../../interfaces/occurrence.interface';
+import { getOccurrenceIcon } from '../../utils/convertTypeOcurrence';
 
 @Component({
   selector: 'app-map-occurrence',
@@ -39,7 +38,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   private searchAddressService = inject(SearchAddressService);
   private cdr = inject(ChangeDetectorRef);
   private snackBar = inject(MatSnackBar);
-  private ocurrences: IOcurrenceGroup[] = [];
+  private ocurrences: IOcurrence[] = [];
 
   private heatPoints = L.layerGroup();
   private ocurrencePoints = L.layerGroup();
@@ -152,25 +151,21 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
   }
 
   loadOccurrences(): void {
-    this.ocurrenceService
-      .getAll()
-      .pipe(
-        map((dados) => dados.filter((o) => o.amount > 5)),
-        catchError((error) => {
-          console.error('Erro ao carregar ocorrências:', error);
-          return of([]);
-        })
-      )
-      .subscribe((result) => {
-        this.ocurrences = result;
+    this.ocurrenceService.getAll().subscribe({
+      next: (response) => {
+        this.ocurrences = response;
         this.defineOccurrenceOnMap();
         this.plotHeatMap();
-      });
+      },
+      error: (error) => {
+        console.error('Erro ao carregar ocorrências:', error);
+      },
+    });
   }
 
   private defineOccurrenceOnMap() {
     this.ocurrences.forEach((ponto) => {
-      const html = this.criarMarcadorHTML(ponto.icon, ponto.amount);
+      const html = this.criarMarcadorHTML(getOccurrenceIcon(ponto.type), 1);
 
       const marker = L.marker([ponto.latitude, ponto.longitude], {
         icon: L.divIcon({

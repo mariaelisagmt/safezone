@@ -1,7 +1,5 @@
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @angular-eslint/prefer-inject */
-import { Component, AfterViewInit, OnInit, ChangeDetectorRef, inject } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectorRef, inject } from '@angular/core';
 import * as L from 'leaflet';
 import 'leaflet.heat';
 import 'leaflet-control-geocoder';
@@ -78,6 +76,7 @@ export class MapComponent implements AfterViewInit {
     this.map.on('click', (e) => {
       const lat = e.latlng.lat;
       const lng = e.latlng.lng;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       let address = '';
 
       this.searchAddressService.getAddressByLatLng(lat, lng).subscribe({

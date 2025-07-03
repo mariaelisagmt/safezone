@@ -1,5 +1,4 @@
 import { ICoord } from '../interfaces/coord.interface';
-/* eslint-disable prettier/prettier */
 import { IClusterResult } from '../interfaces/cluster-result.interface';
 
 /**

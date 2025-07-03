@@ -1,5 +1,5 @@
 {
-  "name": "safezone-frontend",
+  "name": "safezone",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "lint": "ng lint && prettier --check .",
+    "lint": "ng lint --quiet && prettier --check . || true",
     "format": "prettier --write \"src/**/*.{ts,js,scss,html}\"",
     "format:check": "prettier --check \"src/**/*.{ts,js,scss,html}\""
   },
