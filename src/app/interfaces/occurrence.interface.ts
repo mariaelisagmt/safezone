@@ -1,5 +1,5 @@
 export interface IOcurrence {
-  id: string;
+  id: number;
   title: string;
   description: string;
   type: string;
