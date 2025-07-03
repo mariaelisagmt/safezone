@@ -114,6 +114,27 @@ npm run test -- --watch=false --browsers=ChromeHeadless
 - Análise de segurança (eslint de segurança / sonarcube,
   SAST + DAST + Snyk + ESLint + Testes)
 - Configuração de proteção de branchs e repositórios (ok)
-- Criação do CI
-- Criaçao do CD
-- Aprender a criar testes de frontend com angular (ok)
+- Criação do CI (ok)
+- Criaçao do CD (ok)
+- Testes de frontend com angular (ok)
+
+Documentação rxjs: https://dev.to/felipedsc/behaviorsubject-para-comunicacao-entre-componentes-3kpj
+
+# Configuração de containers 
+
+- Criando a imagem:
+docker build -t safezone:latest .
+- Carregando:
+docker buildx build --load -t mariaelisagmt/safezone:latest .
+- Criando container:
+docker run -p 8080:80 safezone:latest
+- Subindo imagem para o docker:
+docker build -t mariaelisagmt/safezone .
+docker push mariaelisagmt/safezone:latest
+
+# Verifica pastas geradas no angular
+ng build --configuration production
+
+# Como realizar o deploy
+Criação de Container Registry na azure
+Configuração das secretys no github
