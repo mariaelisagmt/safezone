@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import * as core from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AddOccurrenceTypeObject } from '../../enums/add-occurrence-type.object';
 import { AddressForm } from '../../models/addressform.model';
 
-@Component({
+@core.Component({
   selector: 'app-add-occurrence-modal',
   standalone: true,
   templateUrl: './add-occurrencemodal.html',
@@ -24,12 +24,12 @@ import { AddressForm } from '../../models/addressform.model';
   ],
 })
 export class AddOccurrenceModalComponent {
-  @Input() latitude!: number;
-  @Input() longitude!: number;
-  @Input() title!: string;
-  @Input() address!: string;
-  @Output() submitted = new EventEmitter<AddressForm>();
-  @Output() closed = new EventEmitter<void>();
+  @core.Input() latitude!: number;
+  @core.Input() longitude!: number;
+  @core.Input() title!: string;
+  @core.Input() address!: string;
+  @core.Output() submitted = new core.EventEmitter<AddressForm>();
+  @core.Output() closed = new core.EventEmitter<void>();
 
   description = '';
   selectedType = 0;

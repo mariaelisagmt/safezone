@@ -38,7 +38,7 @@ export class SearchMap {
   addressForMap: any;
 
   typeOcorrenceOptions = Object.entries(TypeOcorrenceEnum)
-    .filter(([key, value]) => isNaN(Number(key)))
+    .filter(([key]) => isNaN(Number(key)))
     .map(([key, value]) => ({
       label: key,
       value: value,

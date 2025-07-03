@@ -60,12 +60,13 @@ export class UserService {
   }
 
   logout(): void {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('token');
     this.currentUserSubject.next(null);
   }
 
   isAuthenticated(): boolean {
-    return !!this.currentUserSubject.value;
+    return localStorage.getItem('userId') != null && localStorage.getItem('token') != null;
   }
 
   getToken(): string | null {
