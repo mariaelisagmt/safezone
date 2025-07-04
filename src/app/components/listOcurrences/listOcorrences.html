@@ -36,3 +36,15 @@
     </table>
   </div>
 </div>
+<app-add-occurrence-modal
+  id="add-occurrence-modal"
+  *ngIf="showModal"
+  [address]="address"
+  [latitude]="modalLat"
+  [longitude]="modalLng"
+  [title]="modalTitle"
+  [description]="modalDescription"
+  [type]="modalType"
+  (submitted)="onModalSubmit($event)"
+  (closed)="closeModal()"
+></app-add-occurrence-modal>

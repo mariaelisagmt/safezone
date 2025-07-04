@@ -91,8 +91,8 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
         });
       },
       error: (error) => {
-        console.error('Erro ao adicionar ocorrência:', error);
-        this.snackBar.open('Erro ao adicionar ocorrência. Tente novamente.', 'Fechar', {
+        console.log('Erro ao adicionar ocorrência:', error);
+        this.snackBar.open(`${error}`, 'Fechar', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center',
