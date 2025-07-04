@@ -15,8 +15,19 @@
 }
 
 .header-safezone {
-  background-color: #003366;
-  color: white;
+  background-color: white;
+  color: #003366;
+  border-bottom: 2px solid rgb(0, 194, 254);
+}
+
+.brand-logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.brand {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
 }
 
 mat-toolbar {
@@ -30,7 +41,7 @@ mat-toolbar {
 }
 
 .mat-icon-menu {
-  color: white;
+  color: rgb(180, 180, 180);
 }
 
 .ativo {
