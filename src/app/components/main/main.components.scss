@@ -38,6 +38,7 @@ mat-toolbar {
 
 .main-content {
   padding: 16px;
+  min-height: calc(100vh - 89px - 50px); /* Adjust based on header/footer height if needed */
 }
 
 .mat-icon-menu {
