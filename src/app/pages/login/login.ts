@@ -1,12 +1,10 @@
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-
-import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
-import { Footer } from '../../components/footer/footer.components';
 import { MatIconModule } from '@angular/material/icon';
-import { Component, inject } from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -14,6 +12,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+
+import { UserService } from '../../services/user.service';
+import { Footer } from '../../components/footer/footer.components';
 
 @Component({
   selector: 'app-login',
@@ -33,6 +34,7 @@ export class LoginComponent {
   private form = inject(FormBuilder);
   private service = inject(UserService);
   private router = inject(Router);
+  private title = inject(Title);
 
   loginForm: FormGroup;
 
@@ -41,6 +43,7 @@ export class LoginComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+    this.title.setTitle('SafeZone - Login');
   }
 
   onSubmit() {

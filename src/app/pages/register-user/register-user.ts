@@ -3,9 +3,11 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+
 import { Footer } from '../../components/footer/footer.components';
 import { UserService } from '../../services/user.service';
-import { Router } from '@angular/router';
 import { IUser } from '../../interfaces/user.interface';
 
 @Component({
@@ -18,6 +20,7 @@ export class RegisterUserComponent {
   private form = inject(FormBuilder);
   private service = inject(UserService);
   private router = inject(Router);
+  private title = inject(Title);
   registerForm: FormGroup;
 
   constructor() {
@@ -26,6 +29,7 @@ export class RegisterUserComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
+    this.title.setTitle('SafeZone - Registro');
   }
 
   onSubmit() {
