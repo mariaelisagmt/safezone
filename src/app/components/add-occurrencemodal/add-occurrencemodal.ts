@@ -28,14 +28,20 @@ export class AddOccurrenceModalComponent {
   @core.Input() longitude!: number;
   @core.Input() title!: string;
   @core.Input() address!: string;
+  @core.Input() type!: string; // New input for occurrence type
+  @core.Input() description!: string; // New input for occurrence description
   @core.Output() submitted = new core.EventEmitter<AddressForm>();
   @core.Output() closed = new core.EventEmitter<void>();
 
-  description = '';
-  selectedType = 0;
+  selectedType = ''; // This will be initialized in ngOnInit or ngOnChanges
   userId = Number(localStorage.getItem('userId')) || 0;
 
   typeOptions = Object.entries(AddOccurrenceTypeObject);
+
+  ngOnInit() {
+    this.selectedType = this.type; // Initialize selectedType with the input type
+    this.description = this.description; // Initialize description with the input description
+  }
 
   submit(event: Event) {
     event.preventDefault();

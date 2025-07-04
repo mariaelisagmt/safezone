@@ -24,17 +24,17 @@ export class OcurrenceService {
     return this.http.post<AddressForm>(this.apiUrl, data);
   }
 
-  update(id: string, data: Partial<IOcurrence>): rxjs.Observable<IOcurrence> {
+  update(id: number, data: AddressForm): rxjs.Observable<IOcurrence> {
     return this.http.put<IOcurrence>(`${this.apiUrl}/${id}`, data);
   }
 
-  delete(id: string): rxjs.Observable<void> {
+  delete(id: number): rxjs.Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  getOcurrencesByUser(userId: number): rxjs.Observable<IOcurrence[]> {
+  getOcurrencesByUser(userId: number): rxjs.Observable<AddressForm[]> {
     return this.http
-      .get<IOcurrence[]>(`${this.apiUrl}`)
+      .get<AddressForm[]>(`${this.apiUrl}`)
       .pipe(rxjs.map((dados) => dados.filter((o) => o.userId == userId)));
   }
 }
