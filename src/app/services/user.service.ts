@@ -14,14 +14,17 @@ export class UserService {
   private router = inject(Router);
   private apiUrl = `${environment.apiUrl}/User`;
   private currentUserSubject = new BehaviorSubject<IUser | null>(null);
+  private user: IUser = {
+    email: '',
+    password: '',
+  };
 
   currentUser$ = this.currentUserSubject.asObservable();
 
   constructor() {
     const userJson = localStorage.getItem('currentUser');
     if (userJson) {
-      const user = JSON.parse(userJson);
-      this.currentUserSubject.next(user);
+      this.currentUserSubject.next(JSON.parse(userJson));
     }
   }
 
@@ -31,7 +34,21 @@ export class UserService {
         localStorage.setItem('token', response.token);
         const userId = JSON.parse(atob(response.token.split('.')[1])).userId; // decodificando o JWT e pegando o userId
         localStorage.setItem('userId', userId);
+        this.user = {
+          userId: userId,
+          email: email,
+          password: '',
+        };
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.router.navigate(['/home']);
+      })
+    );
+  }
+
+  getUser(userId: number): Observable<IUser> {
+    return this.http.get<IUser>(`${this.apiUrl}/${userId}`).pipe(
+      tap((user) => {
+        this.currentUserSubject.next(user);
       })
     );
   }
