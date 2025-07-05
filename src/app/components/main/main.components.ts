@@ -36,7 +36,6 @@ export class MainComponent implements OnInit {
   menuAberto = false;
 
   ngOnInit(): void {
-    this.userService.getUser()
     this.userService.currentUser$.subscribe((user) => {
       this.user = user;
     });
