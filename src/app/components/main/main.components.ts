@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -28,7 +28,7 @@ import { IUser } from '../../interfaces/user.interface';
   templateUrl: './main.components.html',
   styleUrl: './main.components.scss',
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   private userService = inject(UserService);
   private router = inject(Router);
 
@@ -36,6 +36,7 @@ export class MainComponent {
   menuAberto = false;
 
   ngOnInit(): void {
+    this.userService.getUser()
     this.userService.currentUser$.subscribe((user) => {
       this.user = user;
     });

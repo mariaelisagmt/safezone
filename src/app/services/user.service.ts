@@ -40,6 +40,7 @@ export class UserService {
           password: '',
         };
         localStorage.setItem('currentUser', JSON.stringify(this.user));
+        this.currentUserSubject.next(this.user);
         this.router.navigate(['/home']);
       })
     );
@@ -67,7 +68,7 @@ export class UserService {
     const current = this.currentUserSubject.value;
     if (!current) throw new Error('Usuário não autorizado.');
 
-    return this.http.put<IUser>(`${this.apiUrl}/${current.id}`, userData).pipe(
+    return this.http.put<IUser>(`${this.apiUrl}/${current.userId}`, userData).pipe(
       tap((updatedUser) => {
         const merged = { ...current, ...updatedUser };
         localStorage.setItem('currentUser', JSON.stringify(merged));

@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-settings',
@@ -12,29 +15,40 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class SettingsComponent {
   private form = inject(FormBuilder);
-
-  settingsForm: FormGroup;
-  isDarkMode = false;
+  private service = inject(UserService);
+  private router = inject(Router);
+  registerForm: FormGroup;
+  user: IUser | null = null;
 
   constructor() {
-    this.settingsForm = this.form.group({
-      name: ['Maria Elisa', Validators.required],
-      email: ['maria.elisa@example.com', [Validators.required, Validators.email]],
-      defaultAddress: ['Fortaleza, CE'],
+    this.service.currentUser$.subscribe((data) => {
+      this.user = data;
+    });
+
+    this.registerForm = this.form.group({
+      email: [this.user?.email, [Validators.required, Validators.email]],
+      password: ['', Validators.required],
     });
   }
 
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    document.body.classList.toggle('dark-mode', this.isDarkMode);
-  }
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const email = this.registerForm.get('email')?.value;
+      const password = this.registerForm.get('password')?.value;
 
-  saveSettings() {
-    if (this.settingsForm.valid) {
-      console.log('Configurações salvas:', this.settingsForm.value);
-      // aqui você pode fazer um POST para o backend ou salvar localStorage
-    } else {
-      console.log('Formulário inválido');
+      console.log('Atualização', this.registerForm.value);
+      this.user = {
+        email: email,
+        password: password,
+      };
+      this.service.updateProfile(this.user).subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          console.log('Error', 'Erro ao atualizar usuário', err);
+        },
+      });
     }
   }
 }
