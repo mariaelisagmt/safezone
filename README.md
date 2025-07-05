@@ -1,140 +1,104 @@
-# SafezoneFrontend
+# 🚨 SafezoneFrontend
+SafezoneFrontend é a interface de uma aplicação Angular voltada para segurança e monitoramento georreferenciado. Ele utiliza tecnologias modernas como Angular Material, Leaflet para mapas, Jest para testes e integrações com CI/CD e Docker para deploy.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.1.
+## 📦 Tecnologias utilizadas
+- Angular 20
+- Angular Material
+- Leaflet + HeatMap + Geocoder
+- Jest para testes unitários
+- ESLint + Prettier para padronização e análise estática
+- RxJS (BehaviorSubject) para comunicação entre componentes
+- Docker para containerização
+- Azure Container Registry + GitHub Actions para CI/CD
+- JSON Server para backend mockado
 
-## Development server
+## 🚀 Como iniciar o projeto localmente
+1. Instalar dependências
 
-To start a local development server, run:
+npm install
 
-```bash
+2. Iniciar o servidor de desenvolvimento
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse no navegador: http://localhost:4200
 
-## Code scaffolding
+## 🗺️ Funcionalidades geográficas (Leaflet)
+Para funcionalidades de mapa com geocodificação e camadas de calor:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+npm install leaflet ngx-leaflet leaflet.heat leaflet-control-geocoder
+npm install --save-dev @types/leaflet
 
-```bash
-ng generate component component-name
-```
+## 🧱 Gerando novos componentes
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+ng generate component nome-do-componente
 
-```bash
+Para ver todas as opções de geração:
+
 ng generate --help
-```
 
-## Building
+## 🛠️ Build para produção
 
-To build the project run:
+ng build --configuration production
+Arquivos serão gerados na pasta dist/.
 
-```bash
-ng build
-```
+## ✅ Testes
+Unitários (com Jest)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Jest](https://jestjs.io/) test runner, use the following command:
-
-```bash
 npm test
+npm run test -- --watch=false --browsers=ChromeHeadless
 
-# optionally, you can also specify the path to a specific module you want to test
-```
+## Lint e Prettier
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-## Comandos
-
-LEAFLET
-
-- npm install leaflet ngx-leaflet leaflet.heat
-- npm install --save @types/leaflet
-- npm install leaflet-control-geocoder
-- npm install leaflet leaflet.heat leaflet-control-geocoder
-- npm install --save-dev @types/leaflet
-
-Icones
-
-- npm install @fortawesome/fontawesome-free
-
-Instalação do eslint
-ng add @angular-eslint/schematics
-npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
-
-Instalação do pacote base do angular material
-ng add @angular/material
-npm install @angular/animations
-
-Instalando o zone para testes
-npm install zone.js --save
-
-### Rodando Backend Mockado (JSON-SERVER)
-
-npm install -g json-server
-npm install --save-dev json-server
-
-Rodando
-json-server --watch db.json --port 3000
-
-## Rodando o eslint - Análise de código estática
-
-ng lint ou npx eslint . --ext .ts,.html
-
-## Rodando com o prettier - Análise de formatação e correção automática
-
+ng lint
 npm run lint
 npm run format
 
-## Rodando testes
+## 🧪 Backend Mockado com JSON-SERVER
+Instalação:
 
-npm run test -- --watch=false --browsers=ChromeHeadless
+npm install -g json-server
+npm install --save-dev json-server
+Rodar servidor:
 
-## Recursos:
+json-server --watch db.json --port 3000
 
-- Instalação do docker (testar)
-- Pipeline (ok)
-- Análise de código (ok)
-- Análise de segurança (eslint de segurança / sonarcube,
-  SAST + DAST + Snyk + ESLint + Testes)
-- Configuração de proteção de branchs e repositórios (ok)
-- Criação do CI (ok)
-- Criaçao do CD (ok)
-- Testes de frontend com angular (ok)
+## 📦 Docker
+Criar a imagem:
 
-Documentação rxjs: https://dev.to/felipedsc/behaviorsubject-para-comunicacao-entre-componentes-3kpj
-
-# Configuração de containers 
-
-- Criando a imagem:
 docker build -t safezone:latest .
-- Carregando:
-docker buildx build --load -t mariaelisagmt/safezone:latest .
-- Criando container:
+Executar localmente:
+
 docker run -p 8080:80 safezone:latest
-- Subindo imagem para o docker:
+Enviar para DockerHub:
+
 docker build -t mariaelisagmt/safezone .
 docker push mariaelisagmt/safezone:latest
+## ☁️ Deploy na Azure
+Criar Container Registry
 
-# Verifica pastas geradas no angular
-ng build --configuration production
+Configurar secrets no GitHub (DOCKER_USERNAME, DOCKER_PASSWORD, etc)
 
-# Como realizar o deploy
-Criação de Container Registry na azure
-Configuração das secretys no github
+Publicar imagem com GitHub Actions
+
+Utilizar Azure Web App for Containers para deploy do frontend
+
+## 🔐 Segurança e Qualidade
+Análise estática com ESLint
+
+Prettier para formatação
+
+Testes automatizados com Jest
+
+Proteção de branches (GitHub)
+
+SAST + DAST + Snyk (em CI/CD)
+
+Integração com SonarQube opcional
+
+## 📚 Recursos úteis
+Documentação oficial Angular: https://angular.dev
+
+Documentação RxJS (BehaviorSubject): dev.to link
+
+CLI Angular: Angular CLI Guide
