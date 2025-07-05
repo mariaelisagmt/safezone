@@ -6,7 +6,7 @@
 
 <div class="login-page">
   <div class="register-container">
-    <h2>Registro</h2>
+    <h2>Cadastrar</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Nome</mat-label>
@@ -23,8 +23,8 @@
         <input matInput type="password" formControlName="password" required />
       </mat-form-field>
 
-      <button mat-raised-button color="accent" type="submit" [disabled]="registerForm.invalid">
-        Registrar
+      <button mat-raised-button color="accent" class="register-btn" type="submit" [disabled]="registerForm.invalid">
+        Salvar
       </button>
     </form>
   </div>

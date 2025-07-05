@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterUserComponent } from './register-user';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
@@ -15,7 +15,6 @@ describe('RegisterUserComponent', () => {
   let fixture: ComponentFixture<RegisterUserComponent>;
   let userServiceMock: MockUserService;
   let routerMock: MockRouter;
-  let formBuilder: FormBuilder;
 
   interface MockUserService {
     register: jest.Mock;
@@ -52,7 +51,6 @@ describe('RegisterUserComponent', () => {
 
     fixture = TestBed.createComponent(RegisterUserComponent);
     component = fixture.componentInstance;
-    formBuilder = TestBed.inject(FormBuilder);
     fixture.detectChanges();
   });
 

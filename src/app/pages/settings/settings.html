@@ -1,29 +1,19 @@
-<div class="settings-container">
-  <h2>Configurações do Usuário</h2>
+ <div class="register-container">
+  <h2>Configuração</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" required />
+      </mat-form-field>
 
-  <form [formGroup]="settingsForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Nome</mat-label>
-      <input matInput placeholder="Seu nome" formControlName="name" />
-    </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="Seu email" formControlName="email" />
-    </mat-form-field>
+      <button mat-raised-button color="accent" class="register-btn" type="submit" [disabled]="registerForm.invalid">
+        Salvar
+      </button>
+    </form>
+  </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Endereço Padrão</mat-label>
-      <input matInput placeholder="Endereço" formControlName="defaultAddress" />
-    </mat-form-field>
-
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="saveSettings()"
-      [disabled]="!settingsForm.valid"
-    >
-      Salvar Configurações
-    </button>
-  </form>
-</div>
