@@ -11,16 +11,19 @@ export function showAddressPopup(
 ) {
   let clickedAddress = '';
 
-  const popup = L.popup().setLatLng([lat, lng]).setContent('Carregando endereço...').openOn(map);
+  const popup = L.popup()
+    .setLatLng([lat, lng])
+    .setContent('<span class="font-primary-medium">Carregando endereço...</span>')
+    .openOn(map);
 
   searchAddressService.getAddressByLatLng(lat, lng).subscribe({
     next: (data: AddressData) => {
       clickedAddress = new AddressData(data).getAddress();
       const popupContent = `
-        <div style="text-align: center;">
+        <div class="font-primary-medium" style="text-align: center;">
           <strong>Endereço:</strong> ${clickedAddress}<br>
-          (Lat: ${lat.toFixed(5)}, Long: ${lng.toFixed(5)})<br>
-          <button id="openModalBtn">Adicionar ocorrência</button>
+          <span class="font-primary-light">(Lat: ${lat.toFixed(5)}, Long: ${lng.toFixed(5)})</span><br>
+          <button class="font-primary-medium" style="cursor: pointer; margin-top: 0.5rem;" id="openModalBtn">Adicionar ocorrência</button>
         </div>
       `;
       popup.setContent(popupContent);

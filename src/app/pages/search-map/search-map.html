@@ -10,16 +10,6 @@
         </mat-form-field>
       </div>
       <div class="col">
-        <mat-form-field appearance="outline" class="form-field">
-          <mat-label>Tipo</mat-label>
-          <mat-select formControlName="type">
-            <mat-option *ngFor="let option of typeOcorrenceOptions" [value]="option.value">
-              {{ option.label }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <div class="col">
         <button mat-raised-button class="button-search" type="submit" (click)="onBuscar()">
           <mat-icon>search</mat-icon>
           Buscar

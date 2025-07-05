@@ -18,7 +18,8 @@ import { AddOccurrenceModalComponent } from '../add-occurrencemodal/add-occurren
 import { CommonModule } from '@angular/common';
 import { showAddressPopup } from '../../utils/mapPopupUtil';
 import { AddressForm } from '../../models/addressform.model';
-import { calculateNClusters } from '../../utils/calculatedCentroid';
+import { groupPointsByRectangle } from '../../utils/groupPointsByRectangle';
+import { IRectangleClusterResult } from '../../interfaces/rectangle-cluster-result.interface';
 import { IOcurrence } from '../../interfaces/occurrence.interface';
 import { getOccurrenceIcon } from '../../utils/convertTypeOcurrence';
 
@@ -114,6 +115,7 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.loadOccurrences();
+    this.cdr.detectChanges();
   }
 
   ngAfterViewInit(): void {
@@ -187,13 +189,18 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
         lng: o.longitude,
       };
     });
-    const result = calculateNClusters(points, 3);
-    console.log('Dados clusterizados:', result);
+    const largeAreaKm2 = 5;
+    const smallAreaKm2 = 1;
+    const result: IRectangleClusterResult[] = groupPointsByRectangle(
+      points,
+      largeAreaKm2,
+      smallAreaKm2
+    );
+    console.log('Dados clusterizados (retângulos):', result);
     result.forEach((cluster) => {
-      const heat = L.circle([cluster.center.lat, cluster.center.lng], {
-        radius: cluster.radius, // metros (ajuste conforme escala desejada)
+      const heat = L.rectangle(cluster.bounds, {
         color: 'transparent', // sem contorno
-        fillColor: this.getCor(cluster.classify),
+        fillColor: this.getCor(cluster.members.length), // Pass the number of members for color classification
         fillOpacity: 0.4, // transparência
       });
 
@@ -201,22 +208,22 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     });
 
     this.map.on('zoomend', () => {
+      console.log('Zoom atual:', this.map.getZoom());
       const currentZoom = this.map.getZoom();
-      const minimum = 5;
-      const maximum = 16;
+      const minimum = 0;
+      const maximum = 16; // Increased maximum zoom for rectangles
 
       if (currentZoom >= minimum && currentZoom <= maximum) {
         if (!this.map.hasLayer(this.heatPoints)) this.heatPoints.addTo(this.map);
         if (this.map.hasLayer(this.ocurrencePoints)) this.map.removeLayer(this.ocurrencePoints);
       } else {
         if (this.map.hasLayer(this.heatPoints)) this.map.removeLayer(this.heatPoints);
-        // if(//currentZoom > maximum &&
-        //   !this.map.hasLayer(this.ocurrencePoints))
         this.ocurrencePoints.addTo(this.map);
       }
     });
 
-    if (this.map.getZoom() >= 10 && this.map.getZoom() <= 15) {
+    if (this.map.getZoom() >= 10 && this.map.getZoom() <= 16) {
+      // Adjusted initial check
       this.heatPoints.addTo(this.map);
     }
   }
@@ -230,16 +237,18 @@ export class MapOccurrenceComponent implements OnInit, AfterViewInit {
     `;
   }
 
-  private getCor(valor: number): string {
-    switch (valor) {
-      case 1:
-        return 'red';
-      case 2:
-        return 'orange';
-      case 3:
-        return 'green';
-      default:
-        return 'yellow';
+  private getCor(numberOfPoints: number): string {
+    if (numberOfPoints <= 3) {
+      return 'blue';
+    } else if (numberOfPoints >= 3 && numberOfPoints < 5) {
+      return 'green';
+    } else if (numberOfPoints >= 5 && numberOfPoints <= 10) {
+      return 'yellow';
+    } else if (numberOfPoints > 10 && numberOfPoints <= 15) {
+      return 'orange';
+    } else if (numberOfPoints > 15) {
+      return 'red';
     }
+    return 'gray'; // Default color if none of the conditions are met
   }
 }

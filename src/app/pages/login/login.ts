@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {
@@ -15,6 +16,7 @@ import {
 
 import { UserService } from '../../services/user.service';
 import { Footer } from '../../components/footer/footer.components';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,9 @@ import { Footer } from '../../components/footer/footer.components';
     MatButtonModule,
     Footer,
     MatIconModule,
+    CommonModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.scss'],
@@ -35,8 +39,10 @@ export class LoginComponent {
   private service = inject(UserService);
   private router = inject(Router);
   private title = inject(Title);
+  private cdr = inject(ChangeDetectorRef);
 
   loginForm: FormGroup;
+  loading = false;
 
   constructor() {
     this.loginForm = this.form.group({
@@ -48,15 +54,19 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      this.loading = true;
       const email = this.loginForm.get('email')?.value;
       const password = this.loginForm.get('password')?.value;
 
       this.service.login(email, password).subscribe({
         next: () => {
+          this.loading = false;
           this.router.navigate(['/home']);
         },
-        error: (err) => {
-          console.log('Error', 'Usuário ou senha inválidos', err);
+        error: () => {
+          this.loading = false;
+          alert('Usuário ou senha inválidos');
+          this.cdr.detectChanges();
         },
       });
     }

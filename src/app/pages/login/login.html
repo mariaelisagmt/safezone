@@ -35,9 +35,10 @@
           color="primary"
           type="submit"
           class="login-btn"
-          [disabled]="loginForm.invalid"
+          [disabled]="loginForm.invalid || loading"
         >
-          Entrar
+          <span *ngIf="!loading">Entrar</span>
+          <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
         </button>
       </form>
       <button mat-raised-button color="accent" class="login-btn" (click)="cadastrar()">Criar conta</button>
